@@ -55,7 +55,97 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-
+        
+        /* WELCOME OVERLAY STYLES */
+        #welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 17, 23, 0.9);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            opacity: 1;
+            transition: opacity 0.4s ease-out;
+        }
+        #welcome-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        #welcome-modal {
+            position: relative;
+            z-index: 2;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px var(--accent-glow);
+            transform: scale(0.95);
+            opacity: 0;
+            animation: modal-pop-in 0.5s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes modal-pop-in {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .welcome-icon {
+            font-size: 3.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            animation: tada 1.5s ease-in-out infinite;
+        }
+        @keyframes tada {
+            0% {transform: scale(1);}
+            10%, 20% {transform: scale(0.9) rotate(-3deg);}
+            30%, 50%, 70%, 90% {transform: scale(1.1) rotate(3deg);}
+            40%, 60%, 80% {transform: scale(1.1) rotate(-3deg);}
+            100% {transform: scale(1) rotate(0);}
+        }
+        #welcome-modal h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--heading-primary);
+        }
+        #welcome-modal p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        #close-welcome-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            line-height: 1;
+        }
+        #close-welcome-btn:hover {
+            color: var(--heading-primary);
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        /* ORIGINAL SITE STYLES */
         h1, h2, h3, h4 {
             font-family: var(--font-heading);
             font-weight: 700;
@@ -144,12 +234,6 @@
             font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto 2.5rem; max-width: 700px;
         }
         .hero-cta { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-        .glitch-text:hover { animation: glitch 0.3s linear infinite; }
-        @keyframes glitch{
-          2%,64%{ transform: translate(2px,0) skew(0deg); }
-          4%,60%{ transform: translate(-2px,0) skew(0deg); }
-          62%{ transform: translate(0,0) skew(5deg); }
-        }
         .typing-container { min-height: 48px; } 
         .cursor { display: inline-block; width: 10px; height: 1.2rem; background-color: var(--accent-primary); animation: blink 1s infinite; margin-left: 5px; }
         @keyframes blink { 50% { opacity: 0; } }
@@ -204,7 +288,6 @@
         .project-links { display: flex; gap: 1rem; margin-top: auto; }
         .achievement-source { color: var(--text-secondary); font-size: 0.9rem; }
 
-
         .contact { background-color: var(--bg-secondary); }
         .contact-content { max-width: 700px; margin: 0 auto; text-align: center; }
         .contact-description { color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem; }
@@ -228,45 +311,13 @@
             transform: translateY(-5px); box-shadow: 0 5px 15px var(--accent-glow);
         }
         
-        .policy-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            color: var(--text-secondary);
-        }
-        .policy-content h3 {
-            color: var(--text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-        .policy-content p, .policy-content li {
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-        .policy-content ul {
-            list-style-position: inside;
-            padding-left: 1rem;
-            margin-bottom: 1rem;
-        }
-        .policy-content strong {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        .policy-content .last-updated {
-            text-align: center;
-            font-style: italic;
-            margin-bottom: 3rem;
-            font-size: 0.9rem;
-        }
-        .policy-content code {
-            background-color: var(--bg-primary);
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: var(--accent-primary);
-        }
+        .policy-content { max-width: 800px; margin: 0 auto; text-align: left; color: var(--text-secondary); }
+        .policy-content h3 { color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        .policy-content p, .policy-content li { font-size: 1rem; line-height: 1.8; }
+        .policy-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
+        .policy-content strong { color: var(--text-primary); font-weight: 500; }
+        .policy-content .last-updated { text-align: center; font-style: italic; margin-bottom: 3rem; font-size: 0.9rem; }
+        .policy-content code { background-color: var(--bg-primary); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9rem; color: var(--accent-primary); }
 
         .footer { text-align: center; padding: 3rem 0; background-color: var(--bg-primary); border-top: 1px solid var(--border-color); }
         .footer-text { color: var(--text-secondary); font-size: 0.9rem; }
@@ -275,22 +326,93 @@
         .footer-links a:hover { color: var(--accent-primary); }
 
         .scroll-to-top {
-            position: fixed; bottom: 2rem; right: 2rem;
-            width: 50px; height: 50px;
-            background-color: var(--accent-secondary); color: white;
-            border: none; border-radius: 50%; font-size: 1.25rem;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            z-index: 999;
-            opacity: 0; transform: translateY(100px);
+            position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
+            background-color: var(--accent-secondary); color: white; border: none; border-radius: 50%;
+            font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            z-index: 999; opacity: 0; transform: translateY(100px);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
         .scroll-to-top.visible { opacity: 1; transform: translateY(0); }
+        
         .fade-in {
             opacity: 0; transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .stagger-children > * { transition-delay: calc(0.15s * var(--stagger-index)); }
+        
+        /* COMMENTS SECTION STYLES */
+        .comments-section {
+            background-color: var(--bg-primary);
+        }
+        .comment-form-container, .comments-list-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+        .comment-form input, .comment-form textarea {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.8rem 1rem;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        .comment-form input:focus, .comment-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .comment-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        #comment-submit-btn {
+            align-self: flex-start;
+        }
+        .comment {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .comment-author {
+            font-weight: 700;
+            color: var(--heading-primary);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+        }
+        .comment-body {
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+        #form-status {
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 500;
+            min-height: 1.5rem;
+        }
+        .status-success { color: var(--success); }
+        .status-error { color: var(--danger); }
+        #comments-list p {
+            color: var(--text-secondary);
+        }
 
         @media (max-width: 992px) {
             .about-container { grid-template-columns: 1fr; gap: 3rem; }
@@ -320,6 +442,18 @@
     </style>
 </head>
 <body>
+    <div id="welcome-overlay">
+        <canvas id="confetti-canvas"></canvas>
+        <div id="welcome-modal">
+            <button id="close-welcome-btn" aria-label="Close">×</button>
+            <div class="welcome-icon">
+                <i class="fas fa-tada"></i>
+            </div>
+            <h2>Welcome to the New Domain!</h2>
+            <p>You've arrived at <strong>longno.co.uk</strong>. Thanks for joining me at my new home on the web!</p>
+        </div>
+    </div>
+
     <header class="header" id="header">
         <div class="container header-container">
             <a href="#" class="logo">Joe<span>Savage</span></a>
@@ -330,6 +464,7 @@
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#achievements" class="nav-link">Certs</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#comments" class="nav-link">Comments</a></li>
                     <li><a href="#tos" class="nav-link">TOS</a></li>
                     <li><a href="#privacy" class="nav-link">Privacy</a></li>
                 </ul>
@@ -356,20 +491,15 @@
                 </div>
             </div>
         </section>
+        
         <section id="about" class="about">
             <div class="container">
                 <h2 class="fade-in">01. About Me</h2>
                 <div class="about-container">
                     <div class="about-content fade-in">
-                        <p>
-                            Hello! I'm Joe (Longno), a 19-year-old cybersecurity enthusiast from England. My journey in tech started in software development, where I quickly learned that an application is only as strong as its weakest link. This realization pivoted my focus towards the offensive side of security.
-                        </p>
-                        <p>
-                            Today, my work revolves around <strong>penetration testing</strong>, <strong>vulnerability research</strong>, and promoting <strong>secure coding practices</strong>. I thrive on the challenge of discovering exploits before malicious actors do, whether through rigorous testing, code analysis, or participating in CTFs and bug bounty programs.
-                        </p>
-                        <p>
-                            My philosophy is simple: security isn't a feature, it's a foundation.
-                        </p>
+                        <p>Hello! I'm Joe (Longno), a 19-year-old cybersecurity enthusiast from England. My journey in tech started in software development, where I quickly learned that an application is only as strong as its weakest link. This realization pivoted my focus towards the offensive side of security.</p>
+                        <p>Today, my work revolves around <strong>penetration testing</strong>, <strong>vulnerability research</strong>, and promoting <strong>secure coding practices</strong>. I thrive on the challenge of discovering exploits before malicious actors do, whether through rigorous testing, code analysis, or participating in CTFs and bug bounty programs.</p>
+                        <p>My philosophy is simple: security isn't a feature, it's a foundation.</p>
                     </div>
                     <div class="about-image-wrapper fade-in">
                         <img src="https://raw.githubusercontent.com/Longno12/pics/main/Yeti.png" alt="Joe Savage's Avatar" class="about-image">
@@ -377,6 +507,7 @@
                 </div>
             </div>
         </section>
+        
         <section id="toolbox" class="toolbox">
             <div class="container">
                 <h2 class="fade-in">02. My Toolbox</h2>
@@ -392,93 +523,60 @@
                 </div>
             </div>
         </section>
+        
         <section id="projects" class="projects">
             <div class="container">
                 <h2 class="fade-in">03. Security Projects</h2>
                 <div class="card-grid">
-                    <!-- Project 1 -->
                     <div class="project-card fade-in">
                         <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/GameHub.png" alt="Game Hub Project"></div>
                         <div class="card-content">
                             <h3 class="card-title">Secure Game Hub</h3>
                             <p class="card-description">A unified gaming platform developed with a security-first mindset, implementing measures to protect credentials and mitigate common attack vectors found in gaming applications.</p>
                             <div class="project-tech"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">AppSec</span></div>
-                            <div class="project-links">
-                                <a href="https://github.com/Longno12/Game-Hub" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
-                            </div>
+                            <div class="project-links"><a href="https://github.com/Longno12/Game-Hub" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                         </div>
                     </div>
-                    <!-- Project 2 -->
                     <div class="project-card fade-in">
                         <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/3.jpg" alt="Vulnerability Dashboard"></div>
                         <div class="card-content">
                             <h3 class="card-title">Vulnerability Dashboard</h3>
-                            <p class="card-description">A conceptual security dashboard for aggregating, analyzing, and tracking vulnerabilities from various scanners and reports, providing a centralized view of an organization's security posture.</p>
+                            <p class="card-description">A conceptual security dashboard for aggregating and tracking vulnerabilities, providing a centralized view of an organization's security posture.</p>
                             <div class="project-tech"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Data Viz</span></div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-outline" style="cursor: not-allowed; opacity: 0.6;"><i class="fas fa-lock"></i> Private Repo</a>
-                            </div>
+                            <div class="project-links"><a href="#" class="btn btn-outline" style="cursor: not-allowed; opacity: 0.6;"><i class="fas fa-lock"></i> Private Repo</a></div>
                         </div>
                     </div>
-                    <!-- Project 3 -->
                     <div class="project-card fade-in">
                         <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/Clock.png" alt="Secure Clock Project"></div>
                         <div class="card-content">
                             <h3 class="card-title">Hardened Web App</h3>
-                            <p class="card-description">A simple client-side digital clock application built to demonstrate secure JavaScript implementation, content security policies (CSP), and resistance to common XSS and injection attacks.</p>
+                            <p class="card-description">A simple client-side clock built to demonstrate secure JavaScript, content security policies (CSP), and resistance to common XSS attacks.</p>
                             <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Web Security</span></div>
-                            <div class="project-links">
-                                <a href="https://github.com/Longno12/Dynamic-Digital-Clock" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
-                            </div>
+                            <div class="project-links"><a href="https://github.com/Longno12/Dynamic-Digital-Clock" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
         <section id="achievements" class="achievements">
             <div class="container">
                 <h2 class="fade-in">04. Certifications & Badges</h2>
                 <div class="card-grid">
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/WebFundamentals.png" alt="Web Fundamentals"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Web Fundamentals Path</h3>
-                            <p class="achievement-source">TryHackMe</p>
-                        </div>
-                    </a>
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/5.png" alt="OWASP Top 10"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">OWASP Top 10</h3>
-                            <p class="achievement-source">TryHackMe</p>
-                        </div>
-                    </a>
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/4.png" alt="Pre Security Path"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Pre-Security Path</h3>
-                            <p class="achievement-source">TryHackMe</p>
-                        </div>
-                    </a>
+                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/WebFundamentals.png" alt="Web Fundamentals"></div><div class="card-content"><h3 class="card-title">Web Fundamentals Path</h3><p class="achievement-source">TryHackMe</p></div></a>
+                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/5.png" alt="OWASP Top 10"></div><div class="card-content"><h3 class="card-title">OWASP Top 10</h3><p class="achievement-source">TryHackMe</p></div></a>
+                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/4.png" alt="Pre Security Path"></div><div class="card-content"><h3 class="card-title">Pre-Security Path</h3><p class="achievement-source">TryHackMe</p></div></a>
                 </div>
             </div>
         </section>
+        
         <section id="contact" class="contact">
             <div class="container">
                 <h2 class="fade-in">05. Get In Touch</h2>
                 <div class="contact-content">
-                    <p class="contact-description fade-in">
-                        I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord.
-                    </p>
-                    <div class="fade-in">
-                        <div id="discord-handle" title="Click to copy">
-                            <i class="fab fa-discord discord-icon"></i>
-                            <span id="discord-text">2025Joe</span>
-                        </div>
-                    </div>
-                    <p class="contact-description fade-in">
-                        You can also find me on these platforms:
-                    </p>
+                    <p class="contact-description fade-in">I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord.</p>
+                    <div class="fade-in"><div id="discord-handle" title="Click to copy"><i class="fab fa-discord discord-icon"></i><span id="discord-text">2025Joe</span></div></div>
+                    <p class="contact-description fade-in">You can also find me on these platforms:</p>
                     <div class="social-links fade-in">
                         <a href="https://github.com/Longno12" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
                         <a href="https://tryhackme.com/p/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
@@ -487,97 +585,74 @@
                 </div>
             </div>
         </section>
+        
+        <section id="comments" class="comments-section">
+            <div class="container">
+                <h2 class="fade-in">06. Leave a Comment</h2>
+                <div class="comment-form-container fade-in">
+                    <form id="comment-form" class="comment-form">
+                        <input type="text" id="comment-name" name="name" placeholder="Your Name" required maxlength="50">
+                        <textarea id="comment-message" name="message" placeholder="Your comment... (500 character limit)" required maxlength="500"></textarea>
+                        <button type="submit" id="comment-submit-btn" class="btn btn-primary">Submit Comment</button>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
+                <div class="comments-list-container fade-in">
+                    <h3>Approved Comments:</h3>
+                    <div id="comments-list">
+                        <p>Loading comments...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="tos" class="about">
             <div class="container">
                 <h2 class="fade-in">Terms of Service</h2>
                 <div class="policy-content fade-in">
                     <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <p>By inviting or using our Discord Bot ("the Bot," "our Service") in your server, you and your server members agree to be bound by these Terms of Service ("Terms"). If you do not agree to these terms, you must not use the Bot.</p>
-
+                    <p>By inviting or using our Discord Bot ("the Bot," "our Service") in your server, you and your server members agree to be bound by these Terms of Service ("Terms").</p>
                     <h3>1. License and Permitted Use</h3>
-                    <p>We grant you a non-exclusive, non-transferable, revocable license to use the Bot on the Discord platform. You agree to use the Bot in compliance with these Terms and the Discord Terms of Service.</p>
-                    
+                    <p>We grant you a non-exclusive, non-transferable, revocable license to use the Bot on the Discord platform in compliance with these Terms and the Discord Terms of Service.</p>
                     <h3>2. User Responsibilities and Conduct</h3>
-                    <p>You agree not to:</p>
-                    <ul>
-                        <li>Use the Bot for any illegal or unauthorized purpose.</li>
-                        <li>Attempt to reverse engineer, decompile, or discover the source code of the Bot.</li>
-                        <li>Abuse the Bot's features, such as command spamming, or use it in a way that disrupts the service for others.</li>
-                        <li>Remove, obscure, or alter any copyright or proprietary notices.</li>
-                    </ul>
-                    <p>You are responsible for any user-generated content or configurations made using the Bot within your server.</p>
-
+                    <p>You agree not to use the Bot for any illegal purpose, attempt to reverse engineer it, or abuse its features.</p>
                     <h3>3. Service Availability and Modifications</h3>
-                    <p>The Bot is provided on an "as-is" and "as-available" basis. We do not guarantee that the Service will be uninterrupted or error-free. We reserve the right to modify, suspend, or discontinue the Bot, in whole or in part, at any time with or without notice.</p>
-
+                    <p>The Bot is provided "as-is." We reserve the right to modify or discontinue the Service at any time.</p>
                     <h3>4. Termination</h3>
-                    <p>We reserve the right to terminate your access to the Bot, without notice, for any violation of these Terms. You may terminate this agreement at any time by removing the Bot from your Discord server(s).</p>
-
+                    <p>We may terminate your access for any violation of these Terms. You can terminate by removing the Bot from your server.</p>
                     <h3>5. Limitation of Liability</h3>
-                    <p>To the fullest extent permitted by law, Joe Savage (the developer) shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Bot.</p>
-
+                    <p>The developer shall not be liable for any damages resulting from the use of the Bot.</p>
                     <h3>6. Changes to the Terms</h3>
-                    <p>We may revise these Terms from time to time. The most current version will always be posted on this page. By continuing to use the Service after revisions become effective, you agree to be bound by the revised Terms.</p>
-                    
+                    <p>We may revise these Terms, and continued use of the service constitutes agreement to the new terms.</p>
                     <h3>7. Contact Information</h3>
-                    <p>If you have any questions about these Terms, please contact me on Discord at <code>2025Joe</code>.</p>
+                    <p>If you have questions, contact me on Discord at <code>2025Joe</code>.</p>
+                    <h3>8. Bot Invitation</h3>
+                    <p>You can invite our Discord bot using this link: <a href="https://discord.com/oauth2/authorize?client_id=1390807459328823297" target="_blank">Invite Discord Bot</a></p>
                 </div>
             </div>
         </section>
+
         <section id="privacy" class="projects">
             <div class="container">
                 <h2 class="fade-in">Privacy Policy</h2>
                 <div class="policy-content fade-in">
                     <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <p>This Privacy Policy explains how we collect, use, and protect information in relation to our Discord Bot ("the Bot"). Your privacy is important to us, and we are committed to protecting it.</p>
-
+                    <p>This Privacy Policy explains how we collect and use information in relation to our Discord Bot.</p>
                     <h3>1. Information We Collect</h3>
-                    <p>To provide its services, the Bot collects and stores the following information:</p>
-                    <ul>
-                        <li><strong>Server Information:</strong> Discord Server IDs, server names, and server-specific configurations (e.g., command prefix, enabled/disabled features). This is necessary for the bot to function on a per-server basis.</li>
-                        <li><strong>User Information:</strong> Discord User IDs. This is used to identify users for permissions, moderation actions, and command usage.</li>
-                        <li><strong>Channel Information:</strong> Discord Channel IDs. This is used for commands that are channel-specific, such as logging or announcements.</li>
-                    </ul>
-                    <p><strong>We explicitly DO NOT collect or store:</strong></p>
-                    <ul>
-                        <li>Your Discord password or email address.</li>
-                        <li>The content of user messages (unless required for a specific, opt-in feature like logging, which will be clearly disclosed).</li>
-                        <li>Any personal information that is not made available by the Discord API.</li>
-                    </ul>
-
+                    <p>We collect Server IDs, User IDs, and Channel IDs to provide core functionality. We do not store message content or any personal information beyond what the Discord API provides.</p>
                     <h3>2. How We Use Your Information</h3>
-                    <p>The data collected is used solely for the following purposes:</p>
-                    <ul>
-                        <li>To provide the Bot's core functionality and features.</li>
-                        <li>To customize the user experience based on server settings.</li>
-                        <li>To provide support and troubleshoot issues.</li>
-                        <li>To enforce our Terms of Service.</li>
-                    </ul>
-
-                    <h3>3. Data Storage and Security</h3>
-                    <p>All collected data is stored in a secure database. We take reasonable technical and administrative measures to protect the information against loss, theft, misuse, and unauthorized access or disclosure.</p>
-
-                    <h3>4. Data Sharing</h3>
-                    <p>We do not sell, trade, or otherwise transfer your data to outside parties. Your information will not be shared with any third party, except as required by law.</p>
-
-                    <h3>5. Data Retention and Deletion</h3>
-                    <p>Server-related data is retained as long as the Bot remains in that server. When the Bot is removed from a server, all associated data for that server is permanently deleted from our database. User-specific data can be requested for deletion at any time.</p>
-
-                    <h3>6. Your Rights and Data Control</h3>
-                    <p>You have the right to request access to the data we hold about you or your server. You also have the right to request the deletion of this data. To make a request, please contact me directly.</p>
-
-                    <h3>7. Children's Privacy</h3>
-                    <p>Our Service is not directed to individuals under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and you believe your child has provided us with personal information, please contact us so we can take action.</p>
-
-                    <h3>8. Changes to This Privacy Policy</h3>
-                    <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page. You are advised to review this page periodically for any changes.</p>
-                    
-                    <h3>9. Contact Us</h3>
-                    <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact the developer, Joe Savage, on Discord: <code>2025Joe</code>.</p>
+                    <p>Data is used only to provide and support the Bot's features.</p>
+                    <h3>3. Data Sharing</h3>
+                    <p>We do not sell or trade your data.</p>
+                    <h3>4. Data Retention and Deletion</h3>
+                    <p>Data is deleted when the bot is removed from a server. You can request data deletion at any time.</p>
+                    <h3>5. Contact Us</h3>
+                    <p>For questions, contact the developer on Discord: <code>2025Joe</code>.</p>
                 </div>
             </div>
         </section>
     </main>
+    
     <footer class="footer">
         <div class="container">
             <p class="footer-text">
@@ -597,48 +672,76 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- WELCOME OVERLAY & CONFETTI ---
+            const welcomeOverlay = document.getElementById('welcome-overlay');
+            const closeWelcomeBtn = document.getElementById('close-welcome-btn');
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            let confettiParticles = [];
+            let animationFrameId;
+
+            setupConfetti();
+            renderConfetti();
+
+            closeWelcomeBtn.addEventListener('click', () => {
+                welcomeOverlay.classList.add('hidden');
+                setTimeout(() => {
+                    cancelAnimationFrame(animationFrameId);
+                    welcomeOverlay.style.display = 'none';
+                }, 400);
+            });
+
+            function setupConfetti() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                const confettiCount = 150;
+                const colors = ['#58a6ff', '#1f6feb', '#3fb950', '#f0f6fc'];
+
+                for (let i = 0; i < confettiCount; i++) {
+                    confettiParticles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height - canvas.height,
+                        radius: Math.random() * 5 + 2,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        speed: Math.random() * 3 + 1,
+                    });
+                }
+            }
+
+            function renderConfetti() {
+                welcomeOverlay.style.display = 'flex';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettiParticles.forEach((p, i) => {
+                    p.y += p.speed;
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(p.x, p.y, p.radius, p.radius * 2);
+                    if (p.y > canvas.height) confettiParticles[i] = { ...p, x: Math.random() * canvas.width, y: -20 };
+                });
+                animationFrameId = requestAnimationFrame(renderConfetti);
+            }
+
+            // --- TYPING EFFECT ---
             const typingTextElement = document.getElementById('typing-text');
-            const phrases = [
-                "Cybersecurity Specialist.",
-                "Ethical Hacker.",
-                "Penetration Tester.",
-                "Software Developer."
-            ];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+            const phrases = ["Cybersecurity Specialist.", "Ethical Hacker.", "Penetration Tester.", "Software Developer."];
+            let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
             function type() {
                 const currentPhrase = phrases[phraseIndex];
-                if (isDeleting) {
-                    typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                if (!isDeleting && charIndex === currentPhrase.length) {
-                    isDeleting = true;
-                    setTimeout(type, 2000);
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    setTimeout(type, 500);
-                } else {
-                    const typingSpeed = isDeleting ? 50 : 120;
-                    setTimeout(type, typingSpeed);
+                if(typingTextElement) {
+                    if (isDeleting) charIndex--; else charIndex++;
+                    typingTextElement.textContent = currentPhrase.substring(0, charIndex);
+                    if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); }
+                    else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
+                    else { setTimeout(type, isDeleting ? 50 : 120); }
                 }
             }
-            if (typingTextElement) type();
+            type();
 
+            // --- HEADER SCROLL & MOBILE NAV ---
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('scrolled', window.scrollY > 50);
-            });
-
             const mobileNavToggle = document.getElementById('mobile-nav-toggle');
             const nav = document.getElementById('nav');
+            window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
             mobileNavToggle.addEventListener('click', () => {
                 nav.classList.toggle('active');
                 mobileNavToggle.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
@@ -646,66 +749,110 @@
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     if (nav.classList.contains('active')) {
-                       nav.classList.remove('active');
-                       mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        nav.classList.remove('active');
+                        mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 });
             });
 
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const observerOptions = { rootMargin: '-50% 0px -50% 0px' };
-            
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => sectionObserver.observe(section));
-
-
+            // --- FADE-IN & SCROLL-TO-TOP ---
             const fadeElements = document.querySelectorAll('.fade-in');
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        fadeObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            const fadeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
+            }), { threshold: 0.1 });
             fadeElements.forEach(el => fadeObserver.observe(el));
+            window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('visible', window.scrollY > 300));
+            scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+            // --- DISCORD HANDLE COPY ---
             const discordHandle = document.getElementById('discord-handle');
-            const discordText = document.getElementById('discord-text');
-            if (discordHandle) {
+            if(discordHandle) {
                 discordHandle.addEventListener('click', () => {
-                    navigator.clipboard.writeText(discordText.textContent).then(() => {
-                        const originalText = discordText.textContent;
-                        discordText.textContent = 'Copied!';
-                        setTimeout(() => {
-                            discordText.textContent = originalText;
-                        }, 2000);
+                    navigator.clipboard.writeText('2025Joe').then(() => {
+                        const textEl = document.getElementById('discord-text');
+                        const originalText = textEl.textContent;
+                        textEl.textContent = 'Copied!';
+                        setTimeout(() => textEl.textContent = originalText, 2000);
                     });
                 });
             }
 
-            const scrollToTopBtn = document.getElementById('scroll-to-top');
-            window.addEventListener('scroll', () => {
-                scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
-            });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
+            // --- FOOTER YEAR ---
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- COMMENTS FUNCTIONALITY ---
+            const commentForm = document.getElementById('comment-form');
+            const formStatus = document.getElementById('form-status');
+            const commentsList = document.getElementById('comments-list');
+
+            async function loadComments() {
+                try {
+                    const response = await fetch('/.netlify/functions/get-comments');
+                    if (!response.ok) throw new Error('Failed to load comments.');
+                    const comments = await response.json();
+                    
+                    commentsList.innerHTML = '';
+                    if (comments.length === 0) {
+                        commentsList.innerHTML = '<p>No comments yet. Be the first!</p>';
+                    } else {
+                        comments.forEach(comment => {
+                            const commentEl = document.createElement('div');
+                            commentEl.className = 'comment';
+                            const safeName = comment.name.replace(/</g, "<").replace(/>/g, ">");
+                            const safeMessage = comment.message.replace(/</g, "<").replace(/>/g, ">");
+
+                            commentEl.innerHTML = `
+                                <div class="comment-header">
+                                    <span class="comment-author">${safeName}</span>
+                                    <span class="comment-date">${new Date(comment.createdAt).toLocaleDateString()}</span>
+                                </div>
+                                <p class="comment-body">${safeMessage}</p>
+                            `;
+                            commentsList.appendChild(commentEl);
+                        });
+                    }
+                } catch (error) {
+                    commentsList.innerHTML = '<p class="status-error">Could not load comments at this time.</p>';
+                    console.error('Error loading comments:', error);
+                }
+            }
+
+            commentForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitBtn = document.getElementById('comment-submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                formStatus.textContent = '';
+
+                const data = {
+                    name: document.getElementById('comment-name').value.trim(),
+                    message: document.getElementById('comment-message').value.trim()
+                };
+
+                try {
+                    const response = await fetch('/.netlify/functions/submit-comment', {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    const result = await response.json();
+                    if (!response.ok) throw new Error(result.message || 'Server responded with an error.');
+                    
+                    formStatus.textContent = 'Success! Your comment is awaiting moderation.';
+                    formStatus.className = 'status-success';
+                    commentForm.reset();
+                } catch (error) {
+                    formStatus.textContent = `Error: ${error.message}`;
+                    formStatus.className = 'status-error';
+                    console.error('Form submission error:', error);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Comment';
+                }
+            });
+            
+            loadComments();
         });
     </script>
 </body>
