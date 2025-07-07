@@ -56,7 +56,6 @@
             -webkit-font-smoothing: antialiased;
         }
         
-        /* WELCOME OVERLAY STYLES */
         #welcome-overlay {
             position: fixed;
             top: 0;
@@ -145,7 +144,6 @@
             transform: scale(1.1) rotate(90deg);
         }
         
-        /* ORIGINAL SITE STYLES */
         h1, h2, h3, h4 {
             font-family: var(--font-heading);
             font-weight: 700;
@@ -206,6 +204,55 @@
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
         .mobile-nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
 
+        .music-player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: auto;
+        }
+        #play-pause-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        #play-pause-btn:hover {
+            color: var(--accent-primary);
+        }
+        #volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 80px;
+            height: 5px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+        #volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        #volume-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #volume-slider:hover::-webkit-slider-thumb {
+             background: var(--accent-primary);
+        }
+
         .hero {
             min-height: 100vh; display: flex; align-items: center;
             padding-top: 80px; position: relative; overflow: hidden; text-align: center;
@@ -265,6 +312,7 @@
 
         .projects, .achievements { background-color: var(--bg-secondary); }
         .achievements { background-color: var(--bg-primary); }
+        .comments-section { background-color: var(--bg-primary); }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
         .project-card, .achievement-card {
             background-color: var(--surface); border: 1px solid var(--border-color);
@@ -340,79 +388,6 @@
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .stagger-children > * { transition-delay: calc(0.15s * var(--stagger-index)); }
-        
-        /* COMMENTS SECTION STYLES */
-        .comments-section {
-            background-color: var(--bg-primary);
-        }
-        .comment-form-container, .comments-list-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .comment-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-        .comment-form input, .comment-form textarea {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            padding: 0.8rem 1rem;
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: var(--transition-fast);
-        }
-        .comment-form input:focus, .comment-form textarea:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .comment-form textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        #comment-submit-btn {
-            align-self: flex-start;
-        }
-        .comment {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .comment-author {
-            font-weight: 700;
-            color: var(--heading-primary);
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-        }
-        .comment-body {
-            line-height: 1.6;
-            word-wrap: break-word;
-        }
-        #form-status {
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 500;
-            min-height: 1.5rem;
-        }
-        .status-success { color: var(--success); }
-        .status-error { color: var(--danger); }
-        #comments-list p {
-            color: var(--text-secondary);
-        }
 
         @media (max-width: 992px) {
             .about-container { grid-template-columns: 1fr; gap: 3rem; }
@@ -421,7 +396,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; }
             .container { padding: 0 1.5rem; }
-            .mobile-nav-toggle { display: block; }
+            .mobile-nav-toggle { display: block; margin-left: 1rem; }
             .nav {
                 position: fixed; top: 0; right: -100%; width: min(80%, 350px); height: 100vh;
                 background-color: var(--bg-secondary); flex-direction: column; justify-content: center;
@@ -433,6 +408,11 @@
             .nav-link { font-size: 1.2rem; }
             .hero-cta { flex-direction: column; align-items: center; }
             .btn { width: 100%; max-width: 280px; }
+            .music-player { 
+                order: -1; 
+                flex-grow: 1;
+                justify-content: flex-end;
+            }
         }
         @media (max-width: 480px) {
             section { padding: 4rem 0; }
@@ -442,6 +422,8 @@
     </style>
 </head>
 <body>
+    <audio id="background-music" src="background-music.mp3" loop></audio>
+
     <div id="welcome-overlay">
         <canvas id="confetti-canvas"></canvas>
         <div id="welcome-modal">
@@ -469,6 +451,14 @@
                     <li><a href="#privacy" class="nav-link">Privacy</a></li>
                 </ul>
             </nav>
+            
+            <div class="music-player">
+                <button id="play-pause-btn" aria-label="Play or Pause Music">
+                    <i id="play-pause-icon" class="fas fa-play"></i>
+                </button>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+            </div>
+
             <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -543,16 +533,10 @@
                             <h3 class="card-title">Vulnerability Dashboard</h3>
                             <p class="card-description">A conceptual security dashboard for aggregating and tracking vulnerabilities, providing a centralized view of an organization's security posture.</p>
                             <div class="project-tech"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Data Viz</span></div>
-                            <div class="project-links"><a href="#" class="btn btn-outline" style="cursor: not-allowed; opacity: 0.6;"><i class="fas fa-lock"></i> Private Repo</a></div>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/Clock.png" alt="Secure Clock Project"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Hardened Web App</h3>
-                            <p class="card-description">A simple client-side clock built to demonstrate secure JavaScript, content security policies (CSP), and resistance to common XSS attacks.</p>
-                            <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Web Security</span></div>
-                            <div class="project-links"><a href="https://github.com/Longno12/Dynamic-Digital-Clock" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
+                            <div class="project-links">
+                                <a href="https://github.com/Longno12/Security-Dashboard" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
+                                <a href="https://longno12.github.io/Security-Dashboard/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -589,19 +573,23 @@
         <section id="comments" class="comments-section">
             <div class="container">
                 <h2 class="fade-in">06. Leave a Comment</h2>
-                <div class="comment-form-container fade-in">
-                    <form id="comment-form" class="comment-form">
-                        <input type="text" id="comment-name" name="name" placeholder="Your Name" required maxlength="50">
-                        <textarea id="comment-message" name="message" placeholder="Your comment... (500 character limit)" required maxlength="500"></textarea>
-                        <button type="submit" id="comment-submit-btn" class="btn btn-primary">Submit Comment</button>
-                    </form>
-                    <div id="form-status"></div>
-                </div>
-                <div class="comments-list-container fade-in">
-                    <h3>Approved Comments:</h3>
-                    <div id="comments-list">
-                        <p>Loading comments...</p>
-                    </div>
+                <div class="giscus fade-in" style="max-width: 800px; margin: 0 auto;">
+                    <script src="https://giscus.app/client.js"
+                        data-repo="Longno12/Longno"
+                        data-repo-id="R_kgDOMJ7u-Q"
+                        data-category="General"
+                        data-category-id="DIC_kwDOMJ7u-c4CsmZ6"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="en"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                    </script>
                 </div>
             </div>
         </section>
@@ -672,7 +660,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- WELCOME OVERLAY & CONFETTI ---
             const welcomeOverlay = document.getElementById('welcome-overlay');
             const closeWelcomeBtn = document.getElementById('close-welcome-btn');
             const canvas = document.getElementById('confetti-canvas');
@@ -720,7 +707,6 @@
                 animationFrameId = requestAnimationFrame(renderConfetti);
             }
 
-            // --- TYPING EFFECT ---
             const typingTextElement = document.getElementById('typing-text');
             const phrases = ["Cybersecurity Specialist.", "Ethical Hacker.", "Penetration Tester.", "Software Developer."];
             let phraseIndex = 0, charIndex = 0, isDeleting = false;
@@ -737,7 +723,6 @@
             }
             type();
 
-            // --- HEADER SCROLL & MOBILE NAV ---
             const header = document.getElementById('header');
             const mobileNavToggle = document.getElementById('mobile-nav-toggle');
             const nav = document.getElementById('nav');
@@ -755,7 +740,30 @@
                 });
             });
 
-            // --- FADE-IN & SCROLL-TO-TOP ---
+            const audio = document.getElementById('background-music');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = document.getElementById('play-pause-icon');
+            const volumeSlider = document.getElementById('volume-slider');
+
+            audio.volume = volumeSlider.value;
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseIcon.classList.remove('fa-play');
+                    playPauseIcon.classList.add('fa-pause');
+                } else {
+                    audio.pause();
+                    playPauseIcon.classList.remove('fa-pause');
+                    playPauseIcon.classList.add('fa-play');
+                }
+            });
+
+            volumeSlider.addEventListener('input', () => {
+                audio.volume = volumeSlider.value;
+            });
+
+
             const fadeElements = document.querySelectorAll('.fade-in');
             const scrollToTopBtn = document.getElementById('scroll-to-top');
             const fadeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -765,7 +773,6 @@
             window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('visible', window.scrollY > 300));
             scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            // --- DISCORD HANDLE COPY ---
             const discordHandle = document.getElementById('discord-handle');
             if(discordHandle) {
                 discordHandle.addEventListener('click', () => {
@@ -778,81 +785,7 @@
                 });
             }
 
-            // --- FOOTER YEAR ---
             document.getElementById('year').textContent = new Date().getFullYear();
-
-            // --- COMMENTS FUNCTIONALITY ---
-            const commentForm = document.getElementById('comment-form');
-            const formStatus = document.getElementById('form-status');
-            const commentsList = document.getElementById('comments-list');
-
-            async function loadComments() {
-                try {
-                    const response = await fetch('/.netlify/functions/get-comments');
-                    if (!response.ok) throw new Error('Failed to load comments.');
-                    const comments = await response.json();
-                    
-                    commentsList.innerHTML = '';
-                    if (comments.length === 0) {
-                        commentsList.innerHTML = '<p>No comments yet. Be the first!</p>';
-                    } else {
-                        comments.forEach(comment => {
-                            const commentEl = document.createElement('div');
-                            commentEl.className = 'comment';
-                            const safeName = comment.name.replace(/</g, "<").replace(/>/g, ">");
-                            const safeMessage = comment.message.replace(/</g, "<").replace(/>/g, ">");
-
-                            commentEl.innerHTML = `
-                                <div class="comment-header">
-                                    <span class="comment-author">${safeName}</span>
-                                    <span class="comment-date">${new Date(comment.createdAt).toLocaleDateString()}</span>
-                                </div>
-                                <p class="comment-body">${safeMessage}</p>
-                            `;
-                            commentsList.appendChild(commentEl);
-                        });
-                    }
-                } catch (error) {
-                    commentsList.innerHTML = '<p class="status-error">Could not load comments at this time.</p>';
-                    console.error('Error loading comments:', error);
-                }
-            }
-
-            commentForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const submitBtn = document.getElementById('comment-submit-btn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Submitting...';
-                formStatus.textContent = '';
-
-                const data = {
-                    name: document.getElementById('comment-name').value.trim(),
-                    message: document.getElementById('comment-message').value.trim()
-                };
-
-                try {
-                    const response = await fetch('/.netlify/functions/submit-comment', {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: { 'Content-Type': 'application/json' }
-                    });
-                    const result = await response.json();
-                    if (!response.ok) throw new Error(result.message || 'Server responded with an error.');
-                    
-                    formStatus.textContent = 'Success! Your comment is awaiting moderation.';
-                    formStatus.className = 'status-success';
-                    commentForm.reset();
-                } catch (error) {
-                    formStatus.textContent = `Error: ${error.message}`;
-                    formStatus.className = 'status-error';
-                    console.error('Form submission error:', error);
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Comment';
-                }
-            });
-            
-            loadComments();
         });
     </script>
 </body>
