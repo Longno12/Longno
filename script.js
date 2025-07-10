@@ -1,122 +1,172 @@
-window.addEventListener("load", () => {
-  // Initialize Supabase client after page load
-  const supabaseUrl = "https://dhfalykghqmhrwydpzjx.supabase.co";
-  const supabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoZmFseWtnaHFtaHJ3eWRwemp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkzMDE0ODEsImV4cCI6MjA1NDg3NzQ4MX0.ykBwHXp31ZbwpKlypbbdnOVnIeNfYanm0XOO3euGj0o";
+document.addEventListener('DOMContentLoaded', () => {
 
-  // Ensure the script has fully loaded before using the Supabase client
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    console.log("%c[+] System Initialized.", "color: #58a6ff; font-weight: bold;");
+    console.log("Welcome to my portfolio. Feel free to inspect the source or use the terminal in the contact section.");
 
-  const reviewsContainer = document.getElementById("reviewsContainer");
-  const reviewForm = document.getElementById("reviewForm");
+    // --- MUSIC PROMPT LOGIC (Asks every time) ---
+    const musicPromptOverlay = document.getElementById('music-prompt-overlay');
+    const playMusicBtn = document.getElementById('play-music-btn');
+    const declineMusicBtn = document.getElementById('decline-music-btn');
+    const audio = document.getElementById('background-music');
 
-  // Function to create review elements
-  function createReviewElement(review) {
-    const reviewElement = document.createElement("div");
-    reviewElement.className = "review";
+    // Show the prompt on every page load
+    musicPromptOverlay.classList.add('visible');
 
-    const starsHTML = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
-    const formattedDate = new Date(review.created_at).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-
-    reviewElement.innerHTML = `
-      <div class="review-content">
-        <p class="review-text">${review.text}</p>
-        <div class="review-rating">
-          <span class="review-stars">${starsHTML}</span>
-          <span class="review-date">${formattedDate}</span>
-        </div>
-      </div>
-      <p class="review-author">- ${review.name}</p>
-    `;
-
-    return reviewElement;
-  }
-
-  // Function to display reviews
-  function displayReviews(reviews) {
-    reviewsContainer.innerHTML = "";
-    const fragment = document.createDocumentFragment();
-
-    reviews.forEach((review) => {
-      fragment.appendChild(createReviewElement(review));
-    });
-
-    reviewsContainer.appendChild(fragment);
-  }
-
-  // Function to fetch reviews from Supabase
-  async function fetchReviews() {
-    const { data, error } = await supabase
-      .from("reviews")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(20);
-
-    if (error) {
-      console.error("Error fetching reviews:", error);
-      return;
-    }
-
-    displayReviews(data);
-  }
-
-  fetchReviews();
-
-  // Real-time listener for new reviews
-  supabase
-    .channel("public:reviews")
-    .on(
-      "postgres_changes",
-      { event: "INSERT", schema: "public", table: "reviews" },
-      (payload) => {
-        const newReview = payload.new;
-        const reviewElement = createReviewElement(newReview);
-        reviewsContainer.insertBefore(reviewElement, reviewsContainer.firstChild);
-      }
-    )
-    .subscribe();
-
-  // Handle the review form submission
-  reviewForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const reviewName = document.getElementById("reviewName").value;
-    const reviewText = document.getElementById("reviewText").value;
-    const rating = document.querySelector('input[name="rating"]:checked').value;
-
-    const newReview = {
-      name: reviewName,
-      text: reviewText,
-      rating: Number(rating),
+    const handleMusicChoice = (play) => {
+        if (play) {
+            audio.volume = 0.2;
+            audio.play().catch(e => console.error("Audio play failed:", e));
+        }
+        musicPromptOverlay.classList.remove('visible');
     };
 
-    // Insert the new review into Supabase
-    const { data, error } = await supabase.from("reviews").insert([newReview]);
+    playMusicBtn.addEventListener('click', () => handleMusicChoice(true));
+    declineMusicBtn.addEventListener('click', () => handleMusicChoice(false));
 
-    if (error) {
-      console.error("Error inserting review:", error);
-      return;
+
+    // --- THEME TOGGLE ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggleBtn.querySelector('i');
+    const applyTheme = (theme) => {
+        body.dataset.theme = theme;
+        themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('theme', theme);
+        const giscusFrame = document.querySelector('iframe.giscus-frame');
+        if (giscusFrame) {
+            giscusFrame.contentWindow.postMessage({ giscus: { setConfig: { theme: theme === 'dark' ? 'dark_dimmed' : 'light' } } }, 'https://giscus.app');
+        }
+    };
+    themeToggleBtn.addEventListener('click', () => applyTheme(body.dataset.theme === 'dark' ? 'light' : 'dark'));
+    applyTheme(localStorage.getItem('theme') || 'dark');
+
+    // --- TYPING EFFECT ---
+    const typingTextElement = document.getElementById('typing-text');
+    if (typingTextElement) {
+        const phrases = ["Cybersecurity Specialist.", "Ethical Hacker.", "Penetration Tester.", "Software Developer."];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+        const type = () => {
+            const currentPhrase = phrases[phraseIndex];
+            typingTextElement.textContent = currentPhrase.substring(0, charIndex);
+            if (isDeleting) charIndex--; else charIndex++;
+            let typeSpeed = isDeleting ? 40 : 100;
+            if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; typeSpeed = 2000; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500; }
+            setTimeout(type, typeSpeed);
+        };
+        type();
     }
+    
+    // --- HEADER, SCROLL-SPY & SCROLL-TO-TOP ---
+    const header = document.getElementById('header');
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        scrollToTopBtn.classList.toggle('visible', window.scrollY > 300);
 
-    // Clear the form
-    reviewForm.reset();
+        let current = 'hero';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 105) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (current && link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+    scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    
+    // --- MOBILE NAV ---
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const nav = document.getElementById('nav');
+    mobileNavToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        mobileNavToggle.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    navLinks.forEach(link => link.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    }));
 
-    // Show a success message without refreshing the page
-    const successMessage = document.createElement("div");
-    successMessage.textContent = "Thank you for your review!";
-    successMessage.className = "success-message";
-    reviewForm.appendChild(successMessage);
+    // --- FADE IN ON SCROLL ---
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => fadeObserver.observe(el));
 
-    // Remove the success message after 3 seconds
-    setTimeout(() => {
-      successMessage.remove();
-    }, 3000);
+    // --- PROJECT MODALS ---
+    document.querySelectorAll('[data-modal-target]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const modal = document.querySelector(trigger.dataset.modalTarget);
+            modal.classList.add('active');
+        });
+    });
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.classList.contains('modal-close')) {
+                modal.classList.remove('active');
+            }
+        });
+    });
 
-    // Fetch and display updated reviews
-    fetchReviews();
-  });
+    // --- INTERACTIVE TERMINAL ---
+    const terminalOutput = document.getElementById('terminal-output');
+    const terminalInput = document.getElementById('terminal-input');
+    const neofetch = `<span style="color:var(--accent-primary)">
+                 ,MMM8&&&.
+            _...MMMMM88&&&&..._
+         .::'''MMMMM88&&&&&&'''::.
+        ::     MMMMM88&&&&&&     ::
+        '::....MMMMM88&&&&&&....::'
+           ':'.:.MMMMM88&&.:.':'
+             ':.':..:&..:':'
+                 '::--::'
+</span>
+<span style="color:var(--accent-primary)">joe@longno.co.uk</span>
+------------------
+<span style="color:var(--accent-primary)">OS:</span>     Custom Linux Build
+<span style="color:var(--accent-primary)">Host:</span>   Personal Workstation
+<span style="color:var(--accent-primary)">Shell:</span>  zsh
+<span style="color:var(--accent-primary)">Focus:</span>  Cybersecurity
+`;
+    const commands = {
+        help: "Commands: help, whoami, projects, contact, social, neofetch, clear",
+        whoami: "Joe Savage (Longno) - Cybersecurity enthusiast, developer, and professional button-pusher.",
+        projects: "Featured Projects: Secure Game Hub, Vulnerability Dashboard. (Click the cards on the main page for detailed case studies).",
+        contact: "The best way to reach me is on Discord: 2025Joe",
+        social: "Find me on:\n- GitHub:      https://github.com/Longno12\n- TryHackMe:   https://tryhackme.com/p/Longno\n- Bugcrowd:    https://bugcrowd.com/Longno",
+        neofetch: neofetch,
+    };
+    const printToTerminal = (text, type = 'response') => {
+        terminalOutput.innerHTML += `<div class="terminal-line terminal-${type}">${text.replace(/\n/g, '<br>')}</div>`;
+        terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+    };
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && terminalInput.value) {
+            const command = terminalInput.value.trim().toLowerCase();
+            printToTerminal(`<span class="terminal-prompt">guest@longno.co.uk:~$</span> <span class="terminal-command">${command}</span>`);
+            if (command === 'clear') terminalOutput.innerHTML = '';
+            else if (commands[command]) printToTerminal(commands[command]);
+            else printToTerminal(`Command not found: ${command}. Type 'help'.`);
+            terminalInput.value = '';
+        }
+    });
+    printToTerminal("Welcome! Type 'help' to get started.");
+
+    // --- FOOTER YEAR ---
+    document.getElementById('year').textContent = new Date().getFullYear();
 });

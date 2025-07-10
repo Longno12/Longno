@@ -6,433 +6,25 @@
     <title>Joe Savage | Cybersecurity Professional</title>
     <meta name="description" content="Joe Savage (Longno) - Cybersecurity professional specializing in penetration testing, vulnerability research, and secure development.">
     
-    <!-- Fonts -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-
-    <style>
-        :root {
-            --bg-primary: #0D1117;
-            --bg-secondary: #161B22;
-            --surface: rgba(33, 38, 45, 0.6);
-            --border-color: #30363d;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --heading-primary: #f0f6fc;
-            --accent-primary: #58a6ff;
-            --accent-secondary: #1f6feb;
-            --accent-glow: rgba(88, 166, 255, 0.3);
-            --danger: #f85149;
-            --success: #3fb950;
-            --font-heading: 'Exo 2', sans-serif;
-            --font-body: 'Roboto Mono', monospace;
-            --border-radius: 8px;
-            --transition-fast: all 0.2s ease-in-out;
-            --transition-slow: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        #welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(13, 17, 23, 0.9);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(8px);
-            opacity: 1;
-            transition: opacity 0.4s ease-out;
-        }
-        #welcome-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #confetti-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        #welcome-modal {
-            position: relative;
-            z-index: 2;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            max-width: 550px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px var(--accent-glow);
-            transform: scale(0.95);
-            opacity: 0;
-            animation: modal-pop-in 0.5s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        @keyframes modal-pop-in {
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .welcome-icon {
-            font-size: 3.5rem;
-            color: var(--accent-primary);
-            margin-bottom: 1.5rem;
-            animation: tada 1.5s ease-in-out infinite;
-        }
-        @keyframes tada {
-            0% {transform: scale(1);}
-            10%, 20% {transform: scale(0.9) rotate(-3deg);}
-            30%, 50%, 70%, 90% {transform: scale(1.1) rotate(3deg);}
-            40%, 60%, 80% {transform: scale(1.1) rotate(-3deg);}
-            100% {transform: scale(1) rotate(0);}
-        }
-        #welcome-modal h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--heading-primary);
-        }
-        #welcome-modal p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        #close-welcome-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1.25rem;
-            background: none;
-            border: none;
-            font-size: 2.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            line-height: 1;
-        }
-        #close-welcome-btn:hover {
-            color: var(--heading-primary);
-            transform: scale(1.1) rotate(90deg);
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--heading-primary);
-        }
-        h1 { font-size: clamp(2.8rem, 7vw, 4.5rem); }
-        h2 { font-size: clamp(2rem, 6vw, 3rem); text-align: center; margin-bottom: 4rem; position: relative;}
-        h3 { font-size: 1.5rem; }
-
-        h2::after {
-            content: ''; display: block; width: 60px; height: 3px;
-            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
-            margin: 1rem auto 0; border-radius: 2px;
-        }
-
-        a { color: var(--accent-primary); text-decoration: none; transition: var(--transition-fast); }
-        a:hover { color: #80bfff; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 6rem 0; }
-
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
-            padding: 0.8rem 1.8rem; border-radius: var(--border-radius);
-            font-weight: 500; transition: var(--transition-fast); border: 2px solid transparent;
-            cursor: pointer; font-family: var(--font-body); font-size: 1rem;
-        }
-        .btn-primary { background-color: var(--accent-secondary); color: white; }
-        .btn-primary:hover { background-color: var(--accent-primary); transform: translateY(-3px); }
-        .btn-outline { background-color: transparent; color: var(--accent-primary); border-color: var(--accent-secondary); }
-        .btn-outline:hover { background-color: var(--surface); color: white; transform: translateY(-3px); }
-
-        .tag {
-            display: inline-block; padding: 0.3rem 0.8rem; border-radius: 50px;
-            font-size: 0.8rem; font-weight: 500; background-color: rgba(88, 166, 255, 0.15);
-            color: var(--accent-primary); border: 1px solid rgba(88, 166, 255, 0.2);
-        }
-
-        .header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            padding: 1.5rem 0; transition: all 0.3s ease-in-out;
-        }
-        .header.scrolled {
-            background-color: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            padding: 1rem 0;
-        }
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-heading); font-weight: 800; font-size: 1.75rem; color: var(--heading-primary); }
-        .logo span { color: var(--accent-primary); }
-        .nav-list { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-link { color: var(--text-primary); font-weight: 500; position: relative; padding: 0.5rem 0; letter-spacing: 1px; }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 0; height: 2px; background-color: var(--accent-primary); transition: var(--transition-fast);
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .mobile-nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
-
-        .music-player {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-left: auto;
-        }
-        #play-pause-btn {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-        #play-pause-btn:hover {
-            color: var(--accent-primary);
-        }
-        #volume-slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 80px;
-            height: 5px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            outline: none;
-            transition: var(--transition-fast);
-        }
-        #volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background: var(--text-primary);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-        #volume-slider::-moz-range-thumb {
-            width: 15px;
-            height: 15px;
-            background: var(--text-primary);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        #volume-slider:hover::-webkit-slider-thumb {
-             background: var(--accent-primary);
-        }
-
-        .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            padding-top: 80px; position: relative; overflow: hidden; text-align: center;
-        }
-        .hero::before { 
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px), linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.2;
-            animation: moveGrid 20s linear infinite;
-        }
-        @keyframes moveGrid {
-            from { background-position: 0 0; }
-            to { background-position: 40px 40px; }
-        }
-        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
-        .hero-subtitle {
-            color: var(--accent-primary); font-family: var(--font-body); font-size: 1.1rem;
-            margin-bottom: 1rem; letter-spacing: 2px;
-        }
-        .hero-title {
-            margin-bottom: 1.5rem; text-shadow: 0 0 20px var(--accent-glow);
-            animation: fadeIn 1s ease-out;
-        }
-        .hero-description {
-            font-size: 1.25rem; color: var(--text-secondary); margin: 0 auto 2.5rem; max-width: 700px;
-        }
-        .hero-cta { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-        .typing-container { min-height: 48px; } 
-        .cursor { display: inline-block; width: 10px; height: 1.2rem; background-color: var(--accent-primary); animation: blink 1s infinite; margin-left: 5px; }
-        @keyframes blink { 50% { opacity: 0; } }
-
-        .about { background-color: var(--bg-secondary); }
-        .about-container { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: center; }
-        .about-image-wrapper { position: relative; }
-        .about-image {
-            width: 100%; border-radius: var(--border-radius); display: block;
-            border: 2px solid var(--border-color);
-            transition: var(--transition-slow);
-        }
-        .about-image-wrapper:hover .about-image { transform: scale(1.03); box-shadow: 0 0 30px var(--accent-glow); }
-        .about-content p { color: var(--text-secondary); margin-bottom: 1rem; }
-        .about-content strong { color: var(--text-primary); font-weight: 500; }
-
-        .toolbox-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem;
-            max-width: 900px; margin: 0 auto;
-        }
-        .skill-card {
-            background-color: var(--bg-secondary); border: 1px solid var(--border-color);
-            border-radius: var(--border-radius); padding: 1.5rem 1rem;
-            text-align: center; transition: var(--transition-fast);
-        }
-        .skill-card:hover { transform: translateY(-5px); border-color: var(--accent-secondary); box-shadow: 0 0 15px var(--accent-glow); }
-        .skill-card i { font-size: 3rem; color: var(--accent-primary); margin-bottom: 1rem; }
-        .skill-card span { font-size: 1rem; font-weight: 500; }
-
-        .projects, .achievements { background-color: var(--bg-secondary); }
-        .achievements { background-color: var(--bg-primary); }
-        .comments-section { background-color: var(--bg-primary); }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
-        .project-card, .achievement-card {
-            background-color: var(--surface); border: 1px solid var(--border-color);
-            border-radius: var(--border-radius); overflow: hidden;
-            transition: var(--transition-slow);
-            backdrop-filter: blur(5px);
-            display: flex; flex-direction: column;
-        }
-        .project-card:hover, .achievement-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px var(--accent-glow);
-            border-color: var(--accent-primary);
-        }
-        .card-image { height: 200px; overflow: hidden; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .project-card:hover .card-image img, .achievement-card:hover .card-image img { transform: scale(1.05); }
-        .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .card-title { margin-bottom: 0.5rem; }
-        .card-description { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .project-links { display: flex; gap: 1rem; margin-top: auto; }
-        .achievement-source { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .contact { background-color: var(--bg-secondary); }
-        .contact-content { max-width: 700px; margin: 0 auto; text-align: center; }
-        .contact-description { color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem; }
-        #discord-handle {
-            display: inline-flex; align-items: center; gap: 0.75rem;
-            background-color: var(--bg-primary); padding: 1rem 1.5rem;
-            border: 1px solid var(--border-color); border-radius: var(--border-radius);
-            font-size: 1.25rem; margin-bottom: 3rem; cursor: pointer; transition: var(--transition-fast);
-        }
-        #discord-handle:hover { transform: translateY(-3px); background-color: var(--bg-secondary); border-color: var(--accent-secondary); }
-        .discord-icon { color: #5865F2; font-size: 1.5rem; }
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; }
-        .social-icon {
-            display: flex; align-items: center; justify-content: center;
-            width: 50px; height: 50px; border-radius: 50%;
-            background-color: var(--surface); color: var(--text-primary);
-            font-size: 1.25rem; transition: var(--transition-fast); border: 1px solid var(--border-color);
-        }
-        .social-icon:hover {
-            color: white; background-color: var(--accent-secondary);
-            transform: translateY(-5px); box-shadow: 0 5px 15px var(--accent-glow);
-        }
-        
-        .policy-content { max-width: 800px; margin: 0 auto; text-align: left; color: var(--text-secondary); }
-        .policy-content h3 { color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .policy-content p, .policy-content li { font-size: 1rem; line-height: 1.8; }
-        .policy-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1rem; }
-        .policy-content strong { color: var(--text-primary); font-weight: 500; }
-        .policy-content .last-updated { text-align: center; font-style: italic; margin-bottom: 3rem; font-size: 0.9rem; }
-        .policy-content code { background-color: var(--bg-primary); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9rem; color: var(--accent-primary); }
-
-        .footer { text-align: center; padding: 3rem 0; background-color: var(--bg-primary); border-top: 1px solid var(--border-color); }
-        .footer-text { color: var(--text-secondary); font-size: 0.9rem; }
-        .footer-links { margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; }
-        .footer-links a { color: var(--text-secondary); }
-        .footer-links a:hover { color: var(--accent-primary); }
-
-        .scroll-to-top {
-            position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
-            background-color: var(--accent-secondary); color: white; border: none; border-radius: 50%;
-            font-size: 1.25rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            z-index: 999; opacity: 0; transform: translateY(100px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .scroll-to-top.visible { opacity: 1; transform: translateY(0); }
-        
-        .fade-in {
-            opacity: 0; transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .stagger-children > * { transition-delay: calc(0.15s * var(--stagger-index)); }
-
-        @media (max-width: 992px) {
-            .about-container { grid-template-columns: 1fr; gap: 3rem; }
-            .about-image-wrapper { max-width: 500px; margin: 0 auto; order: -1; }
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; } h2 { font-size: 1.8rem; }
-            .container { padding: 0 1.5rem; }
-            .mobile-nav-toggle { display: block; margin-left: 1rem; }
-            .nav {
-                position: fixed; top: 0; right: -100%; width: min(80%, 350px); height: 100vh;
-                background-color: var(--bg-secondary); flex-direction: column; justify-content: center;
-                padding: 2rem; transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1); z-index: 1000;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-            }
-            .nav.active { right: 0; }
-            .nav-list { flex-direction: column; align-items: center; gap: 2rem; }
-            .nav-link { font-size: 1.2rem; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 280px; }
-            .music-player { 
-                order: -1; 
-                flex-grow: 1;
-                justify-content: flex-end;
-            }
-        }
-        @media (max-width: 480px) {
-            section { padding: 4rem 0; }
-            .card-grid { grid-template-columns: 1fr; }
-            .toolbox-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="dark">
     <audio id="background-music" src="background-music.mp3" loop></audio>
 
-    <div id="welcome-overlay">
-        <canvas id="confetti-canvas"></canvas>
-        <div id="welcome-modal">
-            <button id="close-welcome-btn" aria-label="Close">×</button>
-            <div class="welcome-icon">
-                <i class="fas fa-tada"></i>
+    <div id="music-prompt-overlay">
+        <div id="music-prompt-modal">
+            <h3>Background Music?</h3>
+            <p>This site has ambient background music. Would you like to enable it for a more immersive experience?</p>
+            <div class="prompt-buttons">
+                <button id="play-music-btn" class="btn btn-primary">Yes, play music</button>
+                <button id="decline-music-btn" class="btn btn-outline">No, thanks</button>
             </div>
-            <h2>Welcome to the New Domain!</h2>
-            <p>You've arrived at <strong>longno.co.uk</strong>. Thanks for joining me at my new home on the web!</p>
         </div>
     </div>
 
@@ -446,27 +38,17 @@
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#achievements" class="nav-link">Certs</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="#comments" class="nav-link">Comments</a></li>
-                    <li><a href="#tos" class="nav-link">TOS</a></li>
-                    <li><a href="#privacy" class="nav-link">Privacy</a></li>
                 </ul>
             </nav>
-            
-            <div class="music-player">
-                <button id="play-pause-btn" aria-label="Play or Pause Music">
-                    <i id="play-pause-icon" class="fas fa-play"></i>
-                </button>
-                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light mode"><i class="fas fa-sun"></i></button>
             </div>
-
-            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="container hero-content">
                 <p class="hero-subtitle fade-in">Hi, I'm Joe Savage. I'm a...</p>
                 <div class="typing-container">
@@ -481,6 +63,29 @@
                 </div>
             </div>
         </section>
+
+        <section id="approach" class="approach">
+            <div class="container">
+                <h2 class="fade-in">My Approach</h2>
+                <div class="approach-grid">
+                    <div class="approach-card fade-in" style="--stagger-index: 1;">
+                        <i class="fas fa-crosshairs"></i>
+                        <h3>Adversarial Mindset</h3>
+                        <p>I analyze systems from an attacker's perspective to uncover weaknesses before they can be exploited in the wild.</p>
+                    </div>
+                    <div class="approach-card fade-in" style="--stagger-index: 2;">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Security by Design</h3>
+                        <p>Integrating security into every phase of the development lifecycle, not as an afterthought.</p>
+                    </div>
+                    <div class="approach-card fade-in" style="--stagger-index: 3;">
+                        <i class="fas fa-brain"></i>
+                        <h3>Continuous Learning</h3>
+                        <p>The threat landscape evolves daily. I am committed to constantly updating my skills to stay ahead of emerging threats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <section id="about" class="about">
             <div class="container">
@@ -489,10 +94,9 @@
                     <div class="about-content fade-in">
                         <p>Hello! I'm Joe (Longno), a 19-year-old cybersecurity enthusiast from England. My journey in tech started in software development, where I quickly learned that an application is only as strong as its weakest link. This realization pivoted my focus towards the offensive side of security.</p>
                         <p>Today, my work revolves around <strong>penetration testing</strong>, <strong>vulnerability research</strong>, and promoting <strong>secure coding practices</strong>. I thrive on the challenge of discovering exploits before malicious actors do, whether through rigorous testing, code analysis, or participating in CTFs and bug bounty programs.</p>
-                        <p>My philosophy is simple: security isn't a feature, it's a foundation.</p>
                     </div>
                     <div class="about-image-wrapper fade-in">
-                        <img src="https://raw.githubusercontent.com/Longno12/pics/main/Yeti.png" alt="Joe Savage's Avatar" class="about-image">
+                        <img src="https://raw.githubusercontent.com/Longno12/pics/main/Yeti.png" alt="An illustrated avatar of Joe Savage" class="about-image">
                     </div>
                 </div>
             </div>
@@ -502,7 +106,7 @@
             <div class="container">
                 <h2 class="fade-in">02. My Toolbox</h2>
                 <div class="toolbox-grid fade-in stagger-children">
-                    <div class="skill-card" style="--stagger-index: 1;"><i class="devicon-python-plain"></i><span>Python</span></div>
+                     <div class="skill-card" style="--stagger-index: 1;"><i class="devicon-python-plain"></i><span>Python</span></div>
                     <div class="skill-card" style="--stagger-index: 2;"><i class="devicon-csharp-plain"></i><span>C# & .NET</span></div>
                     <div class="skill-card" style="--stagger-index: 3;"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
                     <div class="skill-card" style="--stagger-index: 4;"><i class="devicon-bash-plain"></i><span>Bash Scripting</span></div>
@@ -516,27 +120,24 @@
         
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="fade-in">03. Security Projects</h2>
+                <h2 class="fade-in">03. Featured Projects</h2>
                 <div class="card-grid">
-                    <div class="project-card fade-in">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/GameHub.png" alt="Game Hub Project"></div>
+                    <div class="project-card fade-in" data-modal-target="#project1-modal">
+                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/GameHub.png" alt="Secure Game Hub Project"></div>
                         <div class="card-content">
                             <h3 class="card-title">Secure Game Hub</h3>
-                            <p class="card-description">A unified gaming platform developed with a security-first mindset, implementing measures to protect credentials and mitigate common attack vectors found in gaming applications.</p>
+                            <p class="card-description">A unified gaming platform developed with a security-first mindset, mitigating common attack vectors.</p>
                             <div class="project-tech"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">AppSec</span></div>
-                            <div class="project-links"><a href="https://github.com/Longno12/Game-Hub" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
+                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
                         </div>
                     </div>
-                    <div class="project-card fade-in">
+                    <div class="project-card fade-in" data-modal-target="#project2-modal">
                         <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/3.jpg" alt="Vulnerability Dashboard"></div>
                         <div class="card-content">
                             <h3 class="card-title">Vulnerability Dashboard</h3>
-                            <p class="card-description">A conceptual security dashboard for aggregating and tracking vulnerabilities, providing a centralized view of an organization's security posture.</p>
+                            <p class="card-description">A conceptual security dashboard for aggregating and tracking vulnerabilities from various sources.</p>
                             <div class="project-tech"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Data Viz</span></div>
-                            <div class="project-links">
-                                <a href="https://github.com/Longno12/Security-Dashboard" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
-                                <a href="https://longno12.github.io/Security-Dashboard/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live</a>
-                            </div>
+                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
                         </div>
                     </div>
                 </div>
@@ -558,84 +159,72 @@
             <div class="container">
                 <h2 class="fade-in">05. Get In Touch</h2>
                 <div class="contact-content">
-                    <p class="contact-description fade-in">I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord.</p>
-                    <div class="fade-in"><div id="discord-handle" title="Click to copy"><i class="fab fa-discord discord-icon"></i><span id="discord-text">2025Joe</span></div></div>
-                    <p class="contact-description fade-in">You can also find me on these platforms:</p>
-                    <div class="social-links fade-in">
-                        <a href="https://github.com/Longno12" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://tryhackme.com/p/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
-                        <a href="https://bugcrowd.com/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="Bugcrowd"><i class="fas fa-bug-slash"></i></a>
+                    <p class="contact-description fade-in">I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord, or through the interactive terminal below.</p>
+                    <div id="terminal-container" class="fade-in">
+                        <div id="terminal-output"></div>
+                        <div id="terminal-input-line">
+                            <span class="terminal-prompt">guest@longno.co.uk:~$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                            <span class="terminal-cursor-input"></span>
+                        </div>
+                    </div>
+                    <div class="social-links-wrapper fade-in">
+                        <p class="contact-description">You can also find me on these platforms:</p>
+                        <div class="social-links">
+                            <a href="https://github.com/Longno12" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://tryhackme.com/p/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
+                            <a href="https://bugcrowd.com/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="Bugcrowd"><i class="fas fa-bug-slash"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <section id="comments" class="comments-section">
             <div class="container">
                 <h2 class="fade-in">06. Leave a Comment</h2>
                 <div class="giscus fade-in" style="max-width: 800px; margin: 0 auto;">
                     <script src="https://giscus.app/client.js"
-                        data-repo="Longno12/Longno"
-                        data-repo-id="R_kgDOMJ7u-Q"
-                        data-category="General"
-                        data-category-id="DIC_kwDOMJ7u-c4CsmZ6"
-                        data-mapping="pathname"
-                        data-strict="0"
-                        data-reactions-enabled="1"
-                        data-emit-metadata="0"
-                        data-input-position="bottom"
-                        data-theme="preferred_color_scheme"
-                        data-lang="en"
-                        data-loading="lazy"
-                        crossorigin="anonymous"
-                        async>
+                        data-repo="Longno12/Longno" data-repo-id="R_kgDOMJ7u-Q"
+                        data-category="General" data-category-id="DIC_kwDOMJ7u-c4CsmZ6"
+                        data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+                        data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en"
+                        crossorigin="anonymous" async>
                     </script>
                 </div>
             </div>
         </section>
-
-        <section id="tos" class="about">
-            <div class="container">
+        
+        <section id="tos" class="policy-section">
+            <div class="container policy-container">
                 <h2 class="fade-in">Terms of Service</h2>
                 <div class="policy-content fade-in">
                     <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <p>By inviting or using our Discord Bot ("the Bot," "our Service") in your server, you and your server members agree to be bound by these Terms of Service ("Terms").</p>
                     <h3>1. License and Permitted Use</h3>
-                    <p>We grant you a non-exclusive, non-transferable, revocable license to use the Bot on the Discord platform in compliance with these Terms and the Discord Terms of Service.</p>
+                    <p>We grant you a non-exclusive, non-transferable, revocable license to use our Discord Bot ("the Bot") on the Discord platform in compliance with these Terms and the Discord Terms of Service.</p>
                     <h3>2. User Responsibilities and Conduct</h3>
-                    <p>You agree not to use the Bot for any illegal purpose, attempt to reverse engineer it, or abuse its features.</p>
+                    <p>You agree not to use the Bot for any illegal purpose, attempt to reverse engineer it, or abuse its features. We reserve the right to remove the bot from any server engaging in such activities.</p>
                     <h3>3. Service Availability and Modifications</h3>
-                    <p>The Bot is provided "as-is." We reserve the right to modify or discontinue the Service at any time.</p>
+                    <p>The Bot is provided "as-is." We reserve the right to modify or discontinue the Service at any time without notice.</p>
                     <h3>4. Termination</h3>
                     <p>We may terminate your access for any violation of these Terms. You can terminate by removing the Bot from your server.</p>
-                    <h3>5. Limitation of Liability</h3>
-                    <p>The developer shall not be liable for any damages resulting from the use of the Bot.</p>
-                    <h3>6. Changes to the Terms</h3>
-                    <p>We may revise these Terms, and continued use of the service constitutes agreement to the new terms.</p>
-                    <h3>7. Contact Information</h3>
-                    <p>If you have questions, contact me on Discord at <code>2025Joe</code>.</p>
-                    <h3>8. Bot Invitation</h3>
-                    <p>You can invite our Discord bot using this link: <a href="https://discord.com/oauth2/authorize?client_id=1390807459328823297" target="_blank">Invite Discord Bot</a></p>
+                    <h3>5. Bot Invitation</h3>
+                    <p>You can invite our Discord bot using this link: <a href="https://discord.com/oauth2/authorize?client_id=1390807459328823297" target="_blank">Invite Bot</a></p>
                 </div>
             </div>
         </section>
 
-        <section id="privacy" class="projects">
-            <div class="container">
+        <section id="privacy" class="policy-section">
+             <div class="container policy-container">
                 <h2 class="fade-in">Privacy Policy</h2>
                 <div class="policy-content fade-in">
-                    <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <p>This Privacy Policy explains how we collect and use information in relation to our Discord Bot.</p>
+                     <p class="last-updated">Last Updated: July 04, 2025</p>
                     <h3>1. Information We Collect</h3>
-                    <p>We collect Server IDs, User IDs, and Channel IDs to provide core functionality. We do not store message content or any personal information beyond what the Discord API provides.</p>
+                    <p>To function, the Bot may collect and store the following information provided by the Discord API: Server IDs, User IDs, and Channel IDs. We <strong>do not</strong> store message content or any personal information not explicitly provided by the Discord API for standard bot operation.</p>
                     <h3>2. How We Use Your Information</h3>
-                    <p>Data is used only to provide and support the Bot's features.</p>
-                    <h3>3. Data Sharing</h3>
-                    <p>We do not sell or trade your data.</p>
-                    <h3>4. Data Retention and Deletion</h3>
-                    <p>Data is deleted when the bot is removed from a server. You can request data deletion at any time.</p>
-                    <h3>5. Contact Us</h3>
-                    <p>For questions, contact the developer on Discord: <code>2025Joe</code>.</p>
+                    <p>Data is used solely to provide and support the Bot's features. We do not sell or trade your data.</p>
+                    <h3>3. Data Retention and Deletion</h3>
+                    <p>Data is deleted within 30 days of the bot being removed from a server. You can request immediate data deletion by contacting the developer on Discord: <code>2025Joe</code>.</p>
                 </div>
             </div>
         </section>
@@ -647,146 +236,47 @@
                 Designed & Built by Joe Savage (Longno)<br>
                 © <span id="year"></span> | All Rights Reserved
             </p>
-            <div class="footer-links">
+             <div class="footer-links">
                 <a href="#tos">Terms of Service</a>
                 <a href="#privacy">Privacy Policy</a>
             </div>
         </div>
     </footer>
 
-    <button id="scroll-to-top" class="scroll-to-top" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="scroll-to-top" class="scroll-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+    
+    <div class="modal-overlay" id="project1-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <h3 class="modal-title">Case Study: Secure Game Hub</h3>
+            <p><strong>The Challenge:</strong> Gamers often use the same credentials across multiple platforms, making them a prime target. The goal was to build a centralized game launcher that prioritized user data protection from the ground up.</p>
+            <h4>Security Measures Implemented:</h4>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Credential Protection:</strong> Implemented secure password hashing (Argon2) and encrypted local storage for session tokens.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>API Security:</strong> Designed the API with rate limiting and input validation to prevent brute-force and injection attacks.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Secure Defaults:</strong> Ensured all security settings were enabled by default, following the principle of least privilege.</li>
+            </ul>
+            <div class="project-links"><a href="https://github.com/Longno12/Game-Hub" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="project2-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <h3 class="modal-title">Case Study: Vulnerability Dashboard</h3>
+            <p><strong>The Challenge:</strong> Security teams are often overwhelmed by alerts from various tools. This project aimed to create a single pane of glass to aggregate, de-duplicate, and prioritize vulnerabilities.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Data Aggregation:</strong> Used Python scripts to parse reports from popular scanners (like Nessus, Burp Suite).</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Risk Scoring:</strong> Implemented a custom risk-scoring algorithm based on CVSS scores and asset criticality.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Interactive Visualization:</strong> Used Flask and Chart.js to create interactive charts and tables for data analysis.</li>
+            </ul>
+             <div class="project-links">
+                <a href="https://github.com/Longno12/Security-Dashboard" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
+                <a href="https://longno12.github.io/Security-Dashboard/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const welcomeOverlay = document.getElementById('welcome-overlay');
-            const closeWelcomeBtn = document.getElementById('close-welcome-btn');
-            const canvas = document.getElementById('confetti-canvas');
-            const ctx = canvas.getContext('2d');
-            let confettiParticles = [];
-            let animationFrameId;
-
-            setupConfetti();
-            renderConfetti();
-
-            closeWelcomeBtn.addEventListener('click', () => {
-                welcomeOverlay.classList.add('hidden');
-                setTimeout(() => {
-                    cancelAnimationFrame(animationFrameId);
-                    welcomeOverlay.style.display = 'none';
-                }, 400);
-            });
-
-            function setupConfetti() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                const confettiCount = 150;
-                const colors = ['#58a6ff', '#1f6feb', '#3fb950', '#f0f6fc'];
-
-                for (let i = 0; i < confettiCount; i++) {
-                    confettiParticles.push({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height - canvas.height,
-                        radius: Math.random() * 5 + 2,
-                        color: colors[Math.floor(Math.random() * colors.length)],
-                        speed: Math.random() * 3 + 1,
-                    });
-                }
-            }
-
-            function renderConfetti() {
-                welcomeOverlay.style.display = 'flex';
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                confettiParticles.forEach((p, i) => {
-                    p.y += p.speed;
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(p.x, p.y, p.radius, p.radius * 2);
-                    if (p.y > canvas.height) confettiParticles[i] = { ...p, x: Math.random() * canvas.width, y: -20 };
-                });
-                animationFrameId = requestAnimationFrame(renderConfetti);
-            }
-
-            const typingTextElement = document.getElementById('typing-text');
-            const phrases = ["Cybersecurity Specialist.", "Ethical Hacker.", "Penetration Tester.", "Software Developer."];
-            let phraseIndex = 0, charIndex = 0, isDeleting = false;
-
-            function type() {
-                const currentPhrase = phrases[phraseIndex];
-                if(typingTextElement) {
-                    if (isDeleting) charIndex--; else charIndex++;
-                    typingTextElement.textContent = currentPhrase.substring(0, charIndex);
-                    if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; setTimeout(type, 2000); }
-                    else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
-                    else { setTimeout(type, isDeleting ? 50 : 120); }
-                }
-            }
-            type();
-
-            const header = document.getElementById('header');
-            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-            const nav = document.getElementById('nav');
-            window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
-            mobileNavToggle.addEventListener('click', () => {
-                nav.classList.toggle('active');
-                mobileNavToggle.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            });
-
-            const audio = document.getElementById('background-music');
-            const playPauseBtn = document.getElementById('play-pause-btn');
-            const playPauseIcon = document.getElementById('play-pause-icon');
-            const volumeSlider = document.getElementById('volume-slider');
-
-            audio.volume = volumeSlider.value;
-
-            playPauseBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play();
-                    playPauseIcon.classList.remove('fa-play');
-                    playPauseIcon.classList.add('fa-pause');
-                } else {
-                    audio.pause();
-                    playPauseIcon.classList.remove('fa-pause');
-                    playPauseIcon.classList.add('fa-play');
-                }
-            });
-
-            volumeSlider.addEventListener('input', () => {
-                audio.volume = volumeSlider.value;
-            });
-
-
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const scrollToTopBtn = document.getElementById('scroll-to-top');
-            const fadeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObserver.unobserve(entry.target); }
-            }), { threshold: 0.1 });
-            fadeElements.forEach(el => fadeObserver.observe(el));
-            window.addEventListener('scroll', () => scrollToTopBtn.classList.toggle('visible', window.scrollY > 300));
-            scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-            const discordHandle = document.getElementById('discord-handle');
-            if(discordHandle) {
-                discordHandle.addEventListener('click', () => {
-                    navigator.clipboard.writeText('2025Joe').then(() => {
-                        const textEl = document.getElementById('discord-text');
-                        const originalText = textEl.textContent;
-                        textEl.textContent = 'Copied!';
-                        setTimeout(() => textEl.textContent = originalText, 2000);
-                    });
-                });
-            }
-
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
