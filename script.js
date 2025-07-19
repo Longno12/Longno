@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    console.log("%c[+] System Initialized.", "color: #58a6ff; font-weight: bold;");
+    console.log("%c[+] System Initialized.", "color: #2dd4bf; font-weight: bold;");
     console.log("Welcome to my portfolio. Feel free to inspect the source or use the terminal in the contact section.");
 
     // --- MUSIC PROMPT LOGIC (Asks every time) ---
@@ -138,15 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
 </span>
 <span style="color:var(--accent-primary)">joe@longno.co.uk</span>
 ------------------
-<span style="color:var(--accent-primary)">OS:</span>     Custom Linux Build
-<span style="color:var(--accent-primary)">Host:</span>   Personal Workstation
-<span style="color:var(--accent-primary)">Shell:</span>  zsh
-<span style="color:var(--accent-primary)">Focus:</span>  Cybersecurity
+<span style="color:var(--accent-primary)">OS:</span>      Windows 11
+<span style="color:var(--accent-primary)">Host:</span>    Main PC
+<span style="color:var(--accent-primary)">Shell:</span>   cmd.exe
+<span style="color:var(--accent-primary)">Focus:</span>   Cybersecurity
 `;
     const commands = {
         help: "Commands: help, whoami, projects, contact, social, neofetch, clear",
         whoami: "Joe Savage (Longno) - Cybersecurity enthusiast, developer, and professional button-pusher.",
-        projects: "Featured Projects: Secure Game Hub, Vulnerability Dashboard. (Click the cards on the main page for detailed case studies).",
+        projects: "Featured Projects: Secure Game Hub, Vulnerability Dashboard, Dynamic Digital Clock. (Click the cards on the main page for detailed case studies).",
         contact: "The best way to reach me is on Discord: 2025Joe",
         social: "Find me on:\n- GitHub:      https://github.com/Longno12\n- TryHackMe:   https://tryhackme.com/p/Longno\n- Bugcrowd:    https://bugcrowd.com/Longno",
         neofetch: neofetch,

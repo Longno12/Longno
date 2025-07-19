@@ -20,7 +20,7 @@
     <div id="music-prompt-overlay">
         <div id="music-prompt-modal">
             <h3>Background Music?</h3>
-            <p>This site will have background audio very soon</p>
+            <p>This site has ambient background music. Would you like to enable it for a more immersive experience?</p>
             <div class="prompt-buttons">
                 <button id="play-music-btn" class="btn btn-primary">Yes, play music</button>
                 <button id="decline-music-btn" class="btn btn-outline">No, thanks</button>
@@ -34,6 +34,7 @@
             <nav class="nav" id="nav">
                 <ul class="nav-list">
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#specs" class="nav-link">Rig</a></li>
                     <li><a href="#toolbox" class="nav-link">Toolbox</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#achievements" class="nav-link">Certs</a></li>
@@ -101,10 +102,43 @@
                 </div>
             </div>
         </section>
+
+        <section id="specs" class="specs">
+            <div class="container">
+                <h2 class="fade-in">02. My Rig</h2>
+                <div class="specs-grid fade-in stagger-children">
+                    <div class="spec-card" style="--stagger-index: 1;">
+                        <i class="fas fa-microchip"></i>
+                        <h3>CPU</h3>
+                        <p>Intel Core i9-14900KF</p>
+                    </div>
+                    <div class="spec-card" style="--stagger-index: 2;">
+                        <i class="fas fa-desktop"></i>
+                        <h3>GPU</h3>
+                        <p>NVIDIA GeForce RTX 5080</p>
+                    </div>
+                    <div class="spec-card" style="--stagger-index: 3;">
+                        <i class="fas fa-memory"></i>
+                        <h3>Memory</h3>
+                        <p>31.82GB DDR5 RAM</p>
+                    </div>
+                    <div class="spec-card" style="--stagger-index: 4;">
+                        <i class="fas fa-hdd"></i>
+                        <h3>Storage</h3>
+                        <p>2TB NVMe SSD</p>
+                    </div>
+                    <div class="spec-card" style="--stagger-index: 5;">
+                        <i class="fas fa-fan"></i>
+                        <h3>Cooling</h3>
+                        <p>11 Fan Liquid Cooled</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <section id="toolbox" class="toolbox">
             <div class="container">
-                <h2 class="fade-in">02. My Toolbox</h2>
+                <h2 class="fade-in">03. My Toolbox</h2>
                 <div class="toolbox-grid fade-in stagger-children">
                      <div class="skill-card" style="--stagger-index: 1;"><i class="devicon-python-plain"></i><span>Python</span></div>
                     <div class="skill-card" style="--stagger-index: 2;"><i class="devicon-csharp-plain"></i><span>C# & .NET</span></div>
@@ -120,7 +154,7 @@
         
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="fade-in">03. Featured Projects</h2>
+                <h2 class="fade-in">04. Featured Projects</h2>
                 <div class="card-grid">
                     <div class="project-card fade-in" data-modal-target="#project1-modal">
                         <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/GameHub.png" alt="Secure Game Hub Project"></div>
@@ -140,13 +174,22 @@
                             <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
                         </div>
                     </div>
+                    <div class="project-card fade-in" data-modal-target="#project3-modal">
+                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/Dynamic-Digital-Clock/main/download.png" alt="Dynamic Digital Clock Project"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Dynamic Digital Clock</h3>
+                            <p class="card-description">A sleek, responsive digital clock featuring real-time updates, built with vanilla JavaScript.</p>
+                            <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div>
+                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         
         <section id="achievements" class="achievements">
             <div class="container">
-                <h2 class="fade-in">04. Certifications & Badges</h2>
+                <h2 class="fade-in">05. Certifications & Badges</h2>
                 <div class="card-grid">
                     <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/WebFundamentals.png" alt="Web Fundamentals"></div><div class="card-content"><h3 class="card-title">Web Fundamentals Path</h3><p class="achievement-source">TryHackMe</p></div></a>
                     <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/5.png" alt="OWASP Top 10"></div><div class="card-content"><h3 class="card-title">OWASP Top 10</h3><p class="achievement-source">TryHackMe</p></div></a>
@@ -157,7 +200,7 @@
         
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="fade-in">05. Get In Touch</h2>
+                <h2 class="fade-in">06. Get In Touch</h2>
                 <div class="contact-content">
                     <p class="contact-description fade-in">I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord, or through the interactive terminal below.</p>
                     <div id="terminal-container" class="fade-in">
@@ -182,7 +225,7 @@
 
         <section id="comments" class="comments-section">
             <div class="container">
-                <h2 class="fade-in">06. Leave a Comment</h2>
+                <h2 class="fade-in">07. Leave a Comment</h2>
                 <div class="giscus fade-in" style="max-width: 800px; margin: 0 auto;">
                     <script src="https://giscus.app/client.js"
                         data-repo="Longno12/Longno" data-repo-id="R_kgDOMJ7u-Q"
@@ -273,6 +316,23 @@
              <div class="project-links">
                 <a href="https://github.com/Longno12/Security-Dashboard" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
                 <a href="https://longno12.github.io/Security-Dashboard/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="project3-modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <h3 class="modal-title">Case Study: Dynamic Digital Clock</h3>
+            <p><strong>The Challenge:</strong> To build a clean, real-time, and responsive digital clock from scratch using vanilla JavaScript, focusing on efficient DOM manipulation and modern CSS for styling.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> <strong>Real-Time Updates:</strong> Utilizes JavaScript's `setInterval` method to update the time every second without refreshing the page.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Dynamic UI:</strong> The interface is clean and minimalist, with a responsive layout that adapts to any screen size.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Vanilla JS Core:</strong> The entire clock functionality is built with pure JavaScript, demonstrating core language principles.</li>
+            </ul>
+             <div class="project-links">
+                <a href="https://github.com/Longno12/Dynamic-Digital-Clock" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
+                <a href="https://longno12.github.io/Dynamic-Digital-Clock/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
             </div>
         </div>
     </div>
