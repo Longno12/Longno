@@ -1,342 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe Savage | Cybersecurity Professional</title>
-    <meta name="description" content="Joe Savage (Longno) - Cybersecurity professional specializing in penetration testing, vulnerability research, and secure development.">
-    
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body data-theme="dark">
-    <audio id="background-music" src="background-music.mp3" loop></audio>
-
-    <div id="music-prompt-overlay">
-        <div id="music-prompt-modal">
-            <h3>Background Music?</h3>
-            <p>This site has ambient background music. Would you like to enable it for a more immersive experience?</p>
-            <div class="prompt-buttons">
-                <button id="play-music-btn" class="btn btn-primary">Yes, play music</button>
-                <button id="decline-music-btn" class="btn btn-outline">No, thanks</button>
-            </div>
-        </div>
-    </div>
-
-    <header class="header" id="header">
-        <div class="container header-container">
-            <a href="#" class="logo">Joe<span>Savage</span></a>
-            <nav class="nav" id="nav">
-                <ul class="nav-list">
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#specs" class="nav-link">Rig</a></li>
-                    <li><a href="#toolbox" class="nav-link">Toolbox</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#achievements" class="nav-link">Certs</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-controls">
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light mode"><i class="fas fa-sun"></i></button>
-            </div>
-            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-        </div>
-    </header>
-
-    <main>
-        <section id="hero" class="hero">
-            <div class="container hero-content">
-                <p class="hero-subtitle fade-in">Hi, I'm Joe Savage. I'm a...</p>
-                <div class="typing-container">
-                    <h1 class="hero-title" id="typing-text"></h1><span class="cursor"></span>
-                </div>
-                <p class="hero-description fade-in">
-                    I build and break systems to make them unbreakable. A UK-based security professional passionate about finding vulnerabilities and strengthening digital defenses.
-                </p>
-                <div class="hero-cta fade-in">
-                    <a href="#projects" class="btn btn-primary">My Work <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="approach" class="approach">
-            <div class="container">
-                <h2 class="fade-in">My Approach</h2>
-                <div class="approach-grid">
-                    <div class="approach-card fade-in" style="--stagger-index: 1;">
-                        <i class="fas fa-crosshairs"></i>
-                        <h3>Adversarial Mindset</h3>
-                        <p>I analyze systems from an attacker's perspective to uncover weaknesses before they can be exploited in the wild.</p>
-                    </div>
-                    <div class="approach-card fade-in" style="--stagger-index: 2;">
-                        <i class="fas fa-layer-group"></i>
-                        <h3>Security by Design</h3>
-                        <p>Integrating security into every phase of the development lifecycle, not as an afterthought.</p>
-                    </div>
-                    <div class="approach-card fade-in" style="--stagger-index: 3;">
-                        <i class="fas fa-brain"></i>
-                        <h3>Continuous Learning</h3>
-                        <p>The threat landscape evolves daily. I am committed to constantly updating my skills to stay ahead of emerging threats.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="fade-in">01. About Me</h2>
-                <div class="about-container">
-                    <div class="about-content fade-in">
-                        <p>Hello! I'm Joe (Longno), a 19-year-old cybersecurity enthusiast from England. My journey in tech started in software development, where I quickly learned that an application is only as strong as its weakest link. This realization pivoted my focus towards the offensive side of security.</p>
-                        <p>Today, my work revolves around <strong>penetration testing</strong>, <strong>vulnerability research</strong>, and promoting <strong>secure coding practices</strong>. I thrive on the challenge of discovering exploits before malicious actors do, whether through rigorous testing, code analysis, or participating in CTFs and bug bounty programs.</p>
-                    </div>
-                    <div class="about-image-wrapper fade-in">
-                        <img src="https://raw.githubusercontent.com/Longno12/pics/main/Yeti.png" alt="An illustrated avatar of Joe Savage" class="about-image">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="specs" class="specs">
-            <div class="container">
-                <h2 class="fade-in">02. My Rig</h2>
-                <div class="specs-grid fade-in stagger-children">
-                    <div class="spec-card" style="--stagger-index: 1;">
-                        <i class="fas fa-microchip"></i>
-                        <h3>CPU</h3>
-                        <p>Intel Core i9-14900KF</p>
-                    </div>
-                    <div class="spec-card" style="--stagger-index: 2;">
-                        <i class="fas fa-desktop"></i>
-                        <h3>GPU</h3>
-                        <p>NVIDIA GeForce RTX 5080</p>
-                    </div>
-                    <div class="spec-card" style="--stagger-index: 3;">
-                        <i class="fas fa-memory"></i>
-                        <h3>Memory</h3>
-                        <p>31.82GB DDR5 RAM</p>
-                    </div>
-                    <div class="spec-card" style="--stagger-index: 4;">
-                        <i class="fas fa-hdd"></i>
-                        <h3>Storage</h3>
-                        <p>2TB NVMe SSD</p>
-                    </div>
-                    <div class="spec-card" style="--stagger-index: 5;">
-                        <i class="fas fa-fan"></i>
-                        <h3>Cooling</h3>
-                        <p>11 Fan Liquid Cooled</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="toolbox" class="toolbox">
-            <div class="container">
-                <h2 class="fade-in">03. My Toolbox</h2>
-                <div class="toolbox-grid fade-in stagger-children">
-                     <div class="skill-card" style="--stagger-index: 1;"><i class="devicon-python-plain"></i><span>Python</span></div>
-                    <div class="skill-card" style="--stagger-index: 2;"><i class="devicon-csharp-plain"></i><span>C# & .NET</span></div>
-                    <div class="skill-card" style="--stagger-index: 3;"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
-                    <div class="skill-card" style="--stagger-index: 4;"><i class="devicon-bash-plain"></i><span>Bash Scripting</span></div>
-                    <div class="skill-card" style="--stagger-index: 5;"><i class="fas fa-network-wired"></i><span>Networking</span></div>
-                    <div class="skill-card" style="--stagger-index: 6;"><i class="devicon-linux-plain"></i><span>Linux</span></div>
-                    <div class="skill-card" style="--stagger-index: 7;"><i class="fas fa-shield-halved"></i><span>Metasploit</span></div>
-                    <div class="skill-card" style="--stagger-index: 8;"><i class="fas fa-bug"></i><span>Burp Suite</span></div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2 class="fade-in">04. Featured Projects</h2>
-                <div class="card-grid">
-                    <div class="project-card fade-in" data-modal-target="#project1-modal">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/GameHub.png" alt="Secure Game Hub Project"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Secure Game Hub</h3>
-                            <p class="card-description">A unified gaming platform developed with a security-first mindset, mitigating common attack vectors.</p>
-                            <div class="project-tech"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">AppSec</span></div>
-                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in" data-modal-target="#project2-modal">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/3.jpg" alt="Vulnerability Dashboard"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Vulnerability Dashboard</h3>
-                            <p class="card-description">A conceptual security dashboard for aggregating and tracking vulnerabilities from various sources.</p>
-                            <div class="project-tech"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Data Viz</span></div>
-                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
-                        </div>
-                    </div>
-                    <div class="project-card fade-in" data-modal-target="#project3-modal">
-                        <div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/Dynamic-Digital-Clock/main/download.png" alt="Dynamic Digital Clock Project"></div>
-                        <div class="card-content">
-                            <h3 class="card-title">Dynamic Digital Clock</h3>
-                            <p class="card-description">A sleek, responsive digital clock featuring real-time updates, built with vanilla JavaScript.</p>
-                            <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div>
-                            <div class="project-links"><span class="btn-fake">View Case Study <i class="fas fa-arrow-right"></i></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="achievements" class="achievements">
-            <div class="container">
-                <h2 class="fade-in">05. Certifications & Badges</h2>
-                <div class="card-grid">
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/WebFundamentals.png" alt="Web Fundamentals"></div><div class="card-content"><h3 class="card-title">Web Fundamentals Path</h3><p class="achievement-source">TryHackMe</p></div></a>
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/5.png" alt="OWASP Top 10"></div><div class="card-content"><h3 class="card-title">OWASP Top 10</h3><p class="achievement-source">TryHackMe</p></div></a>
-                    <a href="https://tryhackme.com/p/Longno" target="_blank" rel="noopener noreferrer" class="achievement-card fade-in"><div class="card-image"><img src="https://raw.githubusercontent.com/Longno12/pics/main/4.png" alt="Pre Security Path"></div><div class="card-content"><h3 class="card-title">Pre-Security Path</h3><p class="achievement-source">TryHackMe</p></div></a>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="fade-in">06. Get In Touch</h2>
-                <div class="contact-content">
-                    <p class="contact-description fade-in">I'm always open to discussing new projects, security research, or collaboration opportunities. The best way to reach me is on Discord, or through the interactive terminal below.</p>
-                    <div id="terminal-container" class="fade-in">
-                        <div id="terminal-output"></div>
-                        <div id="terminal-input-line">
-                            <span class="terminal-prompt">guest@longno.co.uk:~$</span>
-                            <input type="text" id="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                            <span class="terminal-cursor-input"></span>
-                        </div>
-                    </div>
-                    <div class="social-links-wrapper fade-in">
-                        <p class="contact-description">You can also find me on these platforms:</p>
-                        <div class="social-links">
-                            <a href="https://github.com/Longno12" class="social-icon" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="https://tryhackme.com/p/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="TryHackMe"><i class="fas fa-user-secret"></i></a>
-                            <a href="https://bugcrowd.com/Longno" class="social-icon" target="_blank" rel="noopener noreferrer" title="Bugcrowd"><i class="fas fa-bug-slash"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="comments" class="comments-section">
-            <div class="container">
-                <h2 class="fade-in">07. Leave a Comment</h2>
-                <div class="giscus fade-in" style="max-width: 800px; margin: 0 auto;">
-                    <script src="https://giscus.app/client.js"
-                        data-repo="Longno12/Longno" data-repo-id="R_kgDOMJ7u-Q"
-                        data-category="General" data-category-id="DIC_kwDOMJ7u-c4CsmZ6"
-                        data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
-                        data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en"
-                        crossorigin="anonymous" async>
-                    </script>
-                </div>
-            </div>
-        </section>
-        
-        <section id="tos" class="policy-section">
-            <div class="container policy-container">
-                <h2 class="fade-in">Terms of Service</h2>
-                <div class="policy-content fade-in">
-                    <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <h3>1. License and Permitted Use</h3>
-                    <p>We grant you a non-exclusive, non-transferable, revocable license to use our Discord Bot ("the Bot") on the Discord platform in compliance with these Terms and the Discord Terms of Service.</p>
-                    <h3>2. User Responsibilities and Conduct</h3>
-                    <p>You agree not to use the Bot for any illegal purpose, attempt to reverse engineer it, or abuse its features. We reserve the right to remove the bot from any server engaging in such activities.</p>
-                    <h3>3. Service Availability and Modifications</h3>
-                    <p>The Bot is provided "as-is." We reserve the right to modify or discontinue the Service at any time without notice.</p>
-                    <h3>4. Termination</h3>
-                    <p>We may terminate your access for any violation of these Terms. You can terminate by removing the Bot from your server.</p>
-                    <h3>5. Bot Invitation</h3>
-                    <p>You can invite our Discord bot using this link: <a href="https://discord.com/oauth2/authorize?client_id=1390807459328823297" target="_blank">Invite Bot</a></p>
-                </div>
-            </div>
-        </section>
-
-        <section id="privacy" class="policy-section">
-             <div class="container policy-container">
-                <h2 class="fade-in">Privacy Policy</h2>
-                <div class="policy-content fade-in">
-                     <p class="last-updated">Last Updated: July 04, 2025</p>
-                    <h3>1. Information We Collect</h3>
-                    <p>To function, the Bot may collect and store the following information provided by the Discord API: Server IDs, User IDs, and Channel IDs. We <strong>do not</strong> store message content or any personal information not explicitly provided by the Discord API for standard bot operation.</p>
-                    <h3>2. How We Use Your Information</h3>
-                    <p>Data is used solely to provide and support the Bot's features. We do not sell or trade your data.</p>
-                    <h3>3. Data Retention and Deletion</h3>
-                    <p>Data is deleted within 30 days of the bot being removed from a server. You can request immediate data deletion by contacting the developer on Discord: <code>2025Joe</code>.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">
-                Designed & Built by Joe Savage (Longno)<br>
-                © <span id="year"></span> | All Rights Reserved
-            </p>
-             <div class="footer-links">
-                <a href="#tos">Terms of Service</a>
-                <a href="#privacy">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-
-    <button id="scroll-to-top" class="scroll-to-top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
-    
-    <div class="modal-overlay" id="project1-modal">
-        <div class="modal-content">
-            <button class="modal-close">×</button>
-            <h3 class="modal-title">Case Study: Secure Game Hub</h3>
-            <p><strong>The Challenge:</strong> Gamers often use the same credentials across multiple platforms, making them a prime target. The goal was to build a centralized game launcher that prioritized user data protection from the ground up.</p>
-            <h4>Security Measures Implemented:</h4>
-            <ul>
-                <li><i class="fas fa-check-circle"></i> <strong>Credential Protection:</strong> Implemented secure password hashing (Argon2) and encrypted local storage for session tokens.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>API Security:</strong> Designed the API with rate limiting and input validation to prevent brute-force and injection attacks.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Secure Defaults:</strong> Ensured all security settings were enabled by default, following the principle of least privilege.</li>
-            </ul>
-            <div class="project-links"><a href="https://github.com/Longno12/Game-Hub" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
-        </div>
-    </div>
-    <div class="modal-overlay" id="project2-modal">
-        <div class="modal-content">
-            <button class="modal-close">×</button>
-            <h3 class="modal-title">Case Study: Vulnerability Dashboard</h3>
-            <p><strong>The Challenge:</strong> Security teams are often overwhelmed by alerts from various tools. This project aimed to create a single pane of glass to aggregate, de-duplicate, and prioritize vulnerabilities.</p>
-            <h4>Key Features:</h4>
-            <ul>
-                <li><i class="fas fa-check-circle"></i> <strong>Data Aggregation:</strong> Used Python scripts to parse reports from popular scanners (like Nessus, Burp Suite).</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Risk Scoring:</strong> Implemented a custom risk-scoring algorithm based on CVSS scores and asset criticality.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Interactive Visualization:</strong> Used Flask and Chart.js to create interactive charts and tables for data analysis.</li>
-            </ul>
-             <div class="project-links">
-                <a href="https://github.com/Longno12/Security-Dashboard" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
-                <a href="https://longno12.github.io/Security-Dashboard/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
-            </div>
-        </div>
-    </div>
-    <div class="modal-overlay" id="project3-modal">
-        <div class="modal-content">
-            <button class="modal-close">×</button>
-            <h3 class="modal-title">Case Study: Dynamic Digital Clock</h3>
-            <p><strong>The Challenge:</strong> To build a clean, real-time, and responsive digital clock from scratch using vanilla JavaScript, focusing on efficient DOM manipulation and modern CSS for styling.</p>
-            <h4>Key Features:</h4>
-            <ul>
-                <li><i class="fas fa-check-circle"></i> <strong>Real-Time Updates:</strong> Utilizes JavaScript's `setInterval` method to update the time every second without refreshing the page.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Dynamic UI:</strong> The interface is clean and minimalist, with a responsive layout that adapts to any screen size.</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Vanilla JS Core:</strong> The entire clock functionality is built with pure JavaScript, demonstrating core language principles.</li>
-            </ul>
-             <div class="project-links">
-                <a href="https://github.com/Longno12/Dynamic-Digital-Clock" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a>
-                <a href="https://longno12.github.io/Dynamic-Digital-Clock/" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<script>var s="=\"EPDUZQF!iunm?=iunm!mboh>#fo#?!!=ifbe?!!!!=nfub!dibstfu>#VUG.9#!0?!!!!=nfub!obnf>#wjfxqpsu#!dpoufou>#xjeui>efwjdf.xjeui-!jojujbm.tdbmf>2/1#!0?!!!!=ujumf?Kpf!Tbwbhf!}!Dzcfstfdvsjuz!Qspgfttjpobm=0ujumf?!!!!=nfub!!!!!!obnf>#eftdsjqujpo#!!!!!!dpoufou>#Kpf!Tbwbhf!)Mpohop*!.!Dzcfstfdvsjuz!qspgfttjpobm!tqfdjbmj{joh!jo!qfofusbujpo!uftujoh-!wvmofsbcjmjuz!sftfbsdi-!boe!tfdvsf!efwfmpqnfou/#!!!!0?!!!!=mjol!sfm>#jdpo#!uzqf>#jnbhf0qoh#!isfg>#gbwjdpo/qoh#!0?!!!!=mjol!sfm>#qsfdpoofdu#!isfg>#iuuqt;00gpout/hpphmfbqjt/dpn#!0?!!!!=mjol!sfm>#qsfdpoofdu#!isfg>#iuuqt;00gpout/htubujd/dpn#!dspttpsjhjo!0?!!!!=mjol!!!!!!isfg>#iuuqt;00gpout/hpphmfbqjt/dpn0dtt3@gbnjmz>Spcpup,Npop;xhiuA511<611<811\'gbnjmz>Fyp,3;xhiuA711<811<911\'ejtqmbz>txbq#!!!!!!sfm>#tuzmftiffu#!!!!0?!!!!=mjol!!!!!!sfm>#tuzmftiffu#!!!!!!isfg>#iuuqt;00deokt/dmpvegmbsf/dpn0bkby0mjct0gpou.bxftpnf07/6/20dtt0bmm/njo/dtt#!!!!0?!!!!=mjol!!!!!!sfm>#tuzmftiffu#!!!!!!isfg>#iuuqt;00deo/ktefmjws/ofu0hi0efwjdpot0efwjdpoAw3/26/20efwjdpo/njo/dtt#!!!!0?!!!!=mjol!sfm>#tuzmftiffu#!isfg>#tuzmf/dtt#!0?!!=0ifbe?!!=cpez!ebub.uifnf>#ebsl#?!!!!=bvejp!je>#cbdlhspvoe.nvtjd#!tsd>#cbdlhspvoe.nvtjd/nq4#!mppq?=0bvejp?!!!!=ejw!je>#nvtjd.qspnqu.pwfsmbz#?!!!!!!=ejw!je>#nvtjd.qspnqu.npebm#?!!!!!!!!=i4?Cbdlhspvoe!Nvtjd@=0i4?!!!!!!!!=q?!!!!!!!!!!Uijt!tjuf!ibt!bncjfou!cbdlhspvoe!nvtjd/!Xpvme!zpv!mjlf!up!fobcmf!ju!!!!!!!!!!gps!b!npsf!jnnfstjwf!fyqfsjfodf@!!!!!!!!=0q?!!!!!!!!=ejw!dmbtt>#qspnqu.cvuupot#?!!!!!!!!!!=cvuupo!je>#qmbz.nvtjd.cuo#!dmbtt>#cuo!cuo.qsjnbsz#?!!!!!!!!!!!!Zft-!qmbz!nvtjd!!!!!!!!!!=0cvuupo?!!!!!!!!!!=cvuupo!je>#efdmjof.nvtjd.cuo#!dmbtt>#cuo!cuo.pvumjof#?!!!!!!!!!!!!Op-!uibolt!!!!!!!!!!=0cvuupo?!!!!!!!!=0ejw?!!!!!!=0ejw?!!!!=0ejw?!!!!=ifbefs!dmbtt>#ifbefs#!je>#ifbefs#?!!!!!!=ejw!dmbtt>#dpoubjofs!ifbefs.dpoubjofs#?!!!!!!!!=b!isfg>#$#!dmbtt>#mphp#?Kpf=tqbo?Tbwbhf=0tqbo?=0b?!!!!!!!!=obw!dmbtt>#obw#!je>#obw#?!!!!!!!!!!=vm!dmbtt>#obw.mjtu#?!!!!!!!!!!!!=mj?=b!isfg>#$bcpvu#!dmbtt>#obw.mjol#?Bcpvu=0b?=0mj?!!!!!!!!!!!!=mj?=b!isfg>#$uppmcpy#!dmbtt>#obw.mjol#?Uppmcpy=0b?=0mj?!!!!!!!!!!!!=mj?=b!isfg>#$qspkfdut#!dmbtt>#obw.mjol#?Qspkfdut=0b?=0mj?!!!!!!!!!!!!=mj?=b!isfg>#$bdijfwfnfout#!dmbtt>#obw.mjol#?Dfsut=0b?=0mj?!!!!!!!!!!!!=mj?=b!isfg>#$dpoubdu#!dmbtt>#obw.mjol#?Dpoubdu=0b?=0mj?!!!!!!!!!!=0vm?!!!!!!!!=0obw?!!!!!!!!=ejw!dmbtt>#ifbefs.dpouspmt#?!!!!!!!!!!=cvuupo!!!!!!!!!!!!je>#uifnf.uphhmf#!!!!!!!!!!!!dmbtt>#uifnf.uphhmf.cuo#!!!!!!!!!!!!bsjb.mbcfm>#Uphhmf!ebsl0mjhiu!npef#!!!!!!!!!!?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.tvo#?=0j?!!!!!!!!!!=0cvuupo?!!!!!!!!=0ejw?!!!!!!!!=cvuupo!!!!!!!!!!dmbtt>#npcjmf.obw.uphhmf#!!!!!!!!!!je>#npcjmf.obw.uphhmf#!!!!!!!!!!bsjb.mbcfm>#Uphhmf!obwjhbujpo#!!!!!!!!?!!!!!!!!!!=j!dmbtt>#gbt!gb.cbst#?=0j?!!!!!!!!=0cvuupo?!!!!!!=0ejw?!!!!=0ifbefs?!!!!=nbjo?!!!!!!=tfdujpo!je>#ifsp#!dmbtt>#ifsp#?!!!!!!!!=ejw!dmbtt>#dpoubjofs!ifsp.dpoufou#?!!!!!!!!!!=q!dmbtt>#ifsp.tvcujumf!gbef.jo#?Ij-!J(n!Kpf!Tbwbhf/!J(n!b///=0q?!!!!!!!!!!=ejw!dmbtt>#uzqjoh.dpoubjofs#?!!!!!!!!!!!!=i2!dmbtt>#ifsp.ujumf#!je>#uzqjoh.ufyu#?=0i2?!!!!!!!!!!!!=tqbo!dmbtt>#dvstps#?=0tqbo?!!!!!!!!!!=0ejw?!!!!!!!!!!=q!dmbtt>#ifsp.eftdsjqujpo!gbef.jo#?!!!!!!!!!!!!J!cvjme!boe!csfbl!tztufnt!up!nblf!uifn!vocsfblbcmf/!B!VL.cbtfe!!!!!!!!!!!!tfdvsjuz!qspgfttjpobm!qbttjpobuf!bcpvu!gjoejoh!wvmofsbcjmjujft!boe!!!!!!!!!!!!tusfohuifojoh!ejhjubm!efgfotft/!!!!!!!!!!=0q?!!!!!!!!!!=ejw!dmbtt>#ifsp.dub!gbef.jo#?!!!!!!!!!!!!=b!isfg>#$qspkfdut#!dmbtt>#cuo!cuo.qsjnbsz#!!!!!!!!!!!!!!?Nz!Xpsl!=j!dmbtt>#gb.tpmje!gb.bsspx.sjhiu#?=0j!!!!!!!!!!!!?=0b?!!!!!!!!!!!!=b!isfg>#$dpoubdu#!dmbtt>#cuo!cuo.pvumjof#?Hfu!Jo!Upvdi=0b?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#bqqspbdi#!dmbtt>#bqqspbdi#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?Nz!Bqqspbdi=0i3?!!!!!!!!!!=ejw!dmbtt>#bqqspbdi.hsje#?!!!!!!!!!!!!=ejw!dmbtt>#bqqspbdi.dbse!gbef.jo#!tuzmf>#..tubhhfs.joefy;!2<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.dspttibjst#?=0j?!!!!!!!!!!!!!!=i4?Bewfstbsjbm!Njoetfu=0i4?!!!!!!!!!!!!!!=q?!!!!!!!!!!!!!!!!J!bobmz{f!tztufnt!gspn!bo!buubdlfs(t!qfstqfdujwf!up!vodpwfs!!!!!!!!!!!!!!!!xfblofttft!cfgpsf!uifz!dbo!cf!fyqmpjufe!jo!uif!xjme/!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#bqqspbdi.dbse!gbef.jo#!tuzmf>#..tubhhfs.joefy;!3<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.mbzfs.hspvq#?=0j?!!!!!!!!!!!!!!=i4?Tfdvsjuz!cz!Eftjho=0i4?!!!!!!!!!!!!!!=q?!!!!!!!!!!!!!!!!Joufhsbujoh!tfdvsjuz!joup!fwfsz!qibtf!pg!uif!efwfmpqnfou!!!!!!!!!!!!!!!!mjgfdzdmf-!opu!bt!bo!bgufsuipvhiu/!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#bqqspbdi.dbse!gbef.jo#!tuzmf>#..tubhhfs.joefy;!4<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.csbjo#?=0j?!!!!!!!!!!!!!!=i4?Dpoujovpvt!Mfbsojoh=0i4?!!!!!!!!!!!!!!=q?!!!!!!!!!!!!!!!!Uif!uisfbu!mboetdbqf!fwpmwft!ebjmz/!J!bn!dpnnjuufe!up!dpotuboumz!!!!!!!!!!!!!!!!vqebujoh!nz!tljmmt!up!tubz!bifbe!pg!fnfshjoh!uisfbut/!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!=0ejw?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#bcpvu#!dmbtt>#bcpvu#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?12/!Bcpvu!Nf=0i3?!!!!!!!!!!=ejw!dmbtt>#bcpvu.dpoubjofs#?!!!!!!!!!!!!=ejw!dmbtt>#bcpvu.dpoufou!gbef.jo#?!!!!!!!!!!!!!!=q?!!!!!!!!!!!!!!!!Ifmmp\"!J(n!Kpf!)Mpohop*-!b!2:.zfbs.pme!dzcfstfdvsjuz!fouivtjbtu!!!!!!!!!!!!!!!!gspn!Fohmboe/!Nz!kpvsofz!jo!ufdi!tubsufe!jo!tpguxbsf!!!!!!!!!!!!!!!!efwfmpqnfou-!xifsf!J!rvjdlmz!mfbsofe!uibu!bo!bqqmjdbujpo!jt!pomz!!!!!!!!!!!!!!!!bt!tuspoh!bt!jut!xfblftu!mjol/!Uijt!sfbmj{bujpo!qjwpufe!nz!gpdvt!!!!!!!!!!!!!!!!upxbset!uif!pggfotjwf!tjef!pg!tfdvsjuz/!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!!!=q?!!!!!!!!!!!!!!!!Upebz-!nz!xpsl!sfwpmwft!bspvoe!!!!!!!!!!!!!!!!=tuspoh?qfofusbujpo!uftujoh=0tuspoh?-!!!!!!!!!!!!!!!!=tuspoh?wvmofsbcjmjuz!sftfbsdi=0tuspoh?-!boe!qspnpujoh!!!!!!!!!!!!!!!!=tuspoh?tfdvsf!dpejoh!qsbdujdft=0tuspoh?/!J!uisjwf!po!uif!!!!!!!!!!!!!!!!dibmmfohf!pg!ejtdpwfsjoh!fyqmpjut!cfgpsf!nbmjdjpvt!bdupst!ep-!!!!!!!!!!!!!!!!xifuifs!uispvhi!sjhpspvt!uftujoh-!dpef!bobmztjt-!ps!!!!!!!!!!!!!!!!qbsujdjqbujoh!jo!DUGt!boe!cvh!cpvouz!qsphsbnt/!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#bcpvu.jnbhf.xsbqqfs!gbef.jo#?!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo0Zfuj/qoh#!!!!!!!!!!!!!!!!bmu>#Bo!jmmvtusbufe!bwbubs!pg!Kpf!Tbwbhf#!!!!!!!!!!!!!!!!dmbtt>#bcpvu.jnbhf#!!!!!!!!!!!!!!0?!!!!!!!!!!!!=0ejw?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#uppmcpy#!dmbtt>#uppmcpy#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?13/!Nz!Uppmcpy=0i3?!!!!!!!!!!=ejw!dmbtt>#uppmcpy.hsje!gbef.jo!tubhhfs.dijmesfo#?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!2<#?!!!!!!!!!!!!!!=j!dmbtt>#efwjdpo.qzuipo.qmbjo#?=0j?=tqbo?Qzuipo=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!3<#?!!!!!!!!!!!!!!=j!dmbtt>#efwjdpo.dtibsq.qmbjo#?=0j?=tqbo?D$!\'!/OFU=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!4<#?!!!!!!!!!!!!!!=j!dmbtt>#efwjdpo.kbwbtdsjqu.qmbjo#?=0j?=tqbo?KbwbTdsjqu=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!5<#?!!!!!!!!!!!!!!=j!dmbtt>#efwjdpo.cbti.qmbjo#?=0j?=tqbo?Cbti!Tdsjqujoh=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!6<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.ofuxpsl.xjsfe#?=0j?=tqbo?Ofuxpsljoh=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!7<#?!!!!!!!!!!!!!!=j!dmbtt>#efwjdpo.mjovy.qmbjo#?=0j?=tqbo?Mjovy=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!8<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.tijfme.ibmwfe#?=0j?=tqbo?Nfubtqmpju=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tljmm.dbse#!tuzmf>#..tubhhfs.joefy;!9<#?!!!!!!!!!!!!!!=j!dmbtt>#gbt!gb.cvh#?=0j?=tqbo?Cvsq!Tvjuf=0tqbo?!!!!!!!!!!!!=0ejw?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#qspkfdut#!dmbtt>#qspkfdut#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?14/!Gfbuvsfe!Qspkfdut=0i3?!!!!!!!!!!=ejw!dmbtt>#dbse.hsje#?!!!!!!!!!!!!=ejw!!!!!!!!!!!!!!dmbtt>#qspkfdu.dbse!gbef.jo#!!!!!!!!!!!!!!ebub.npebm.ubshfu>#$qspkfdu2.npebm#!!!!!!!!!!!!?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo0HbnfIvc/qoh#!!!!!!!!!!!!!!!!!!bmu>#Tfdvsf!Hbnf!Ivc!Qspkfdu#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?Tfdvsf!Hbnf!Ivc=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#dbse.eftdsjqujpo#?!!!!!!!!!!!!!!!!!!B!vojgjfe!hbnjoh!qmbugpsn!efwfmpqfe!xjui!b!tfdvsjuz.gjstu!!!!!!!!!!!!!!!!!!njoetfu-!njujhbujoh!dpnnpo!buubdl!wfdupst/!!!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.ufdi#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#ubh#?D$=0tqbo?=tqbo!dmbtt>#ubh#?/OFU=0tqbo!!!!!!!!!!!!!!!!!!?=tqbo!dmbtt>#ubh#?BqqTfd=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#cuo.gblf#!!!!!!!!!!!!!!!!!!!!?Wjfx!Dbtf!Tuvez!=j!dmbtt>#gbt!gb.bsspx.sjhiu#?=0j!!!!!!!!!!!!!!!!!!?=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!!!!!!!!!!!!!!dmbtt>#qspkfdu.dbse!gbef.jo#!!!!!!!!!!!!!!ebub.npebm.ubshfu>#$qspkfdu3.npebm#!!!!!!!!!!!!?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo04/kqh#!!!!!!!!!!!!!!!!!!bmu>#Wvmofsbcjmjuz!Ebticpbse#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?Wvmofsbcjmjuz!Ebticpbse=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#dbse.eftdsjqujpo#?!!!!!!!!!!!!!!!!!!B!dpodfquvbm!tfdvsjuz!ebticpbse!gps!bhhsfhbujoh!boe!usbdljoh!!!!!!!!!!!!!!!!!!wvmofsbcjmjujft!gspn!wbsjpvt!tpvsdft/!!!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.ufdi#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#ubh#?Qzuipo=0tqbo?=tqbo!dmbtt>#ubh#?Gmbtl=0tqbo!!!!!!!!!!!!!!!!!!?=tqbo!dmbtt>#ubh#?Ebub!Wj{=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#cuo.gblf#!!!!!!!!!!!!!!!!!!!!?Wjfx!Dbtf!Tuvez!=j!dmbtt>#gbt!gb.bsspx.sjhiu#?=0j!!!!!!!!!!!!!!!!!!?=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!!!!!!!!!!!!!!dmbtt>#qspkfdu.dbse!gbef.jo#!!!!!!!!!!!!!!ebub.npebm.ubshfu>#$qspkfdu4.npebm#!!!!!!!!!!!!?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230Ezobnjd.Ejhjubm.Dmpdl0nbjo0epxompbe/qoh#!!!!!!!!!!!!!!!!!!bmu>#Ezobnjd!Ejhjubm!Dmpdl!Qspkfdu#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?Ezobnjd!Ejhjubm!Dmpdl=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#dbse.eftdsjqujpo#?!!!!!!!!!!!!!!!!!!B!tmffl-!sftqpotjwf!ejhjubm!dmpdl!gfbuvsjoh!sfbm.ujnf!vqebuft-!!!!!!!!!!!!!!!!!!cvjmu!xjui!wbojmmb!KbwbTdsjqu/!!!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.ufdi#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#ubh#?KbwbTdsjqu=0tqbo!!!!!!!!!!!!!!!!!!?=tqbo!dmbtt>#ubh#?IUNM6=0tqbo?=tqbo!dmbtt>#ubh#?DTT4=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!!!!!!!!!=tqbo!dmbtt>#cuo.gblf#!!!!!!!!!!!!!!!!!!!!?Wjfx!Dbtf!Tuvez!=j!dmbtt>#gbt!gb.bsspx.sjhiu#?=0j!!!!!!!!!!!!!!!!!!?=0tqbo?!!!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=0ejw?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#bdijfwfnfout#!dmbtt>#bdijfwfnfout#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?15/!Dfsujgjdbujpot!\'!Cbehft=0i3?!!!!!!!!!!=ejw!dmbtt>#dbse.hsje#?!!!!!!!!!!!!=b!!!!!!!!!!!!!!isfg>#iuuqt;00uszibdlnf/dpn0q0Mpohop#!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!dmbtt>#bdijfwfnfou.dbse!gbef.jo#!!!!!!!!!!!!!!?=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo0XfcGvoebnfoubmt/qoh#!!!!!!!!!!!!!!!!!!bmu>#Xfc!Gvoebnfoubmt#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?Xfc!Gvoebnfoubmt!Qbui=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#bdijfwfnfou.tpvsdf#?UszIbdlNf=0q?!!!!!!!!!!!!!!=0ejw?=0b!!!!!!!!!!!!?!!!!!!!!!!!!=b!!!!!!!!!!!!!!isfg>#iuuqt;00uszibdlnf/dpn0q0Mpohop#!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!dmbtt>#bdijfwfnfou.dbse!gbef.jo#!!!!!!!!!!!!!!?=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo06/qoh#!!!!!!!!!!!!!!!!!!bmu>#PXBTQ!Upq!21#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?PXBTQ!Upq!21=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#bdijfwfnfou.tpvsdf#?UszIbdlNf=0q?!!!!!!!!!!!!!!=0ejw?=0b!!!!!!!!!!!!?!!!!!!!!!!!!=b!!!!!!!!!!!!!!isfg>#iuuqt;00uszibdlnf/dpn0q0Mpohop#!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!dmbtt>#bdijfwfnfou.dbse!gbef.jo#!!!!!!!!!!!!!!?=ejw!dmbtt>#dbse.jnbhf#?!!!!!!!!!!!!!!!!=jnh!!!!!!!!!!!!!!!!!!tsd>#iuuqt;00sbx/hjuivcvtfsdpoufou/dpn0Mpohop230qjdt0nbjo05/qoh#!!!!!!!!!!!!!!!!!!bmu>#Qsf!Tfdvsjuz!Qbui#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!!!=ejw!dmbtt>#dbse.dpoufou#?!!!!!!!!!!!!!!!!=i4!dmbtt>#dbse.ujumf#?Qsf.Tfdvsjuz!Qbui=0i4?!!!!!!!!!!!!!!!!=q!dmbtt>#bdijfwfnfou.tpvsdf#?UszIbdlNf=0q?!!!!!!!!!!!!!!=0ejw?=0b!!!!!!!!!!!!?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#dpoubdu#!dmbtt>#dpoubdu#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?16/!Hfu!Jo!Upvdi=0i3?!!!!!!!!!!=ejw!dmbtt>#dpoubdu.dpoufou#?!!!!!!!!!!!!=q!dmbtt>#dpoubdu.eftdsjqujpo!gbef.jo#?!!!!!!!!!!!!!!J(n!bmxbzt!pqfo!up!ejtdvttjoh!ofx!qspkfdut-!tfdvsjuz!sftfbsdi-!ps!!!!!!!!!!!!!!dpmmbcpsbujpo!pqqpsuvojujft/!Uif!cftu!xbz!up!sfbdi!nf!jt!po!!!!!!!!!!!!!!Ejtdpse-!ps!uispvhi!uif!joufsbdujwf!ufsnjobm!cfmpx/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=ejw!je>#ufsnjobm.dpoubjofs#!dmbtt>#gbef.jo#?!!!!!!!!!!!!!!=ejw!je>#ufsnjobm.pvuqvu#?=0ejw?!!!!!!!!!!!!!!=ejw!je>#ufsnjobm.joqvu.mjof#?!!!!!!!!!!!!!!!!=tqbo!dmbtt>#ufsnjobm.qspnqu#?hvftuAmpohop/dp/vl;%=0tqbo?!!!!!!!!!!!!!!!!=joqvu!!!!!!!!!!!!!!!!!!uzqf>#ufyu#!!!!!!!!!!!!!!!!!!je>#ufsnjobm.joqvu#!!!!!!!!!!!!!!!!!!bvupdpnqmfuf>#pgg#!!!!!!!!!!!!!!!!!!bvupdpssfdu>#pgg#!!!!!!!!!!!!!!!!!!bvupdbqjubmj{f>#pgg#!!!!!!!!!!!!!!!!!!tqfmmdifdl>#gbmtf#!!!!!!!!!!!!!!!!0?!!!!!!!!!!!!!!!!=tqbo!dmbtt>#ufsnjobm.dvstps.joqvu#?=0tqbo?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=ejw!dmbtt>#tpdjbm.mjolt.xsbqqfs!gbef.jo#?!!!!!!!!!!!!!!=q!dmbtt>#dpoubdu.eftdsjqujpo#?!!!!!!!!!!!!!!!!Zpv!dbo!bmtp!gjoe!nf!po!uiftf!qmbugpsnt;!!!!!!!!!!!!!!=0q?!!!!!!!!!!!!!!=ejw!dmbtt>#tpdjbm.mjolt#?!!!!!!!!!!!!!!!!=b!!!!!!!!!!!!!!!!!!isfg>#iuuqt;00hjuivc/dpn0Mpohop23#!!!!!!!!!!!!!!!!!!dmbtt>#tpdjbm.jdpo#!!!!!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!!!!!ujumf>#HjuIvc#!!!!!!!!!!!!!!!!!!?=j!dmbtt>#gbc!gb.hjuivc#?=0j!!!!!!!!!!!!!!!!?=0b?!!!!!!!!!!!!!!!!=b!!!!!!!!!!!!!!!!!!isfg>#iuuqt;00uszibdlnf/dpn0q0Mpohop#!!!!!!!!!!!!!!!!!!dmbtt>#tpdjbm.jdpo#!!!!!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!!!!!ujumf>#UszIbdlNf#!!!!!!!!!!!!!!!!!!?=j!dmbtt>#gbt!gb.vtfs.tfdsfu#?=0j!!!!!!!!!!!!!!!!?=0b?!!!!!!!!!!!!!!!!=b!!!!!!!!!!!!!!!!!!isfg>#iuuqt;00cvhdspxe/dpn0Mpohop#!!!!!!!!!!!!!!!!!!dmbtt>#tpdjbm.jdpo#!!!!!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!!!!!!!ujumf>#Cvhdspxe#!!!!!!!!!!!!!!!!!!?=j!dmbtt>#gbt!gb.cvh.tmbti#?=0j!!!!!!!!!!!!!!!!?=0b?!!!!!!!!!!!!!!=0ejw?!!!!!!!!!!!!=0ejw?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#dpnnfout#!dmbtt>#dpnnfout.tfdujpo#?!!!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?17/!Mfbwf!b!Dpnnfou=0i3?!!!!!!!!!!=ejw!dmbtt>#hjtdvt!gbef.jo#!tuzmf>#nby.xjeui;!911qy<!nbshjo;!1!bvup<#?!!!!!!!!!!!!=tdsjqu!!!!!!!!!!!!!!tsd>#iuuqt;00hjtdvt/bqq0dmjfou/kt#!!!!!!!!!!!!!!ebub.sfqp>#Mpohop230Mpohop#!!!!!!!!!!!!!!ebub.sfqp.je>#S`lhEPNK8v.R#!!!!!!!!!!!!!!ebub.dbufhpsz>#Hfofsbm#!!!!!!!!!!!!!!ebub.dbufhpsz.je>#EJD`lxEPNK8v.d5Dtn[7#!!!!!!!!!!!!!!ebub.nbqqjoh>#qbuiobnf#!!!!!!!!!!!!!!ebub.tusjdu>#1#!!!!!!!!!!!!!!ebub.sfbdujpot.fobcmfe>#2#!!!!!!!!!!!!!!ebub.fnju.nfubebub>#1#!!!!!!!!!!!!!!ebub.joqvu.qptjujpo>#cpuupn#!!!!!!!!!!!!!!ebub.uifnf>#qsfgfssfe`dpmps`tdifnf#!!!!!!!!!!!!!!ebub.mboh>#fo#!!!!!!!!!!!!!!dspttpsjhjo>#bopoznpvt#!!!!!!!!!!!!!!btzod!!!!!!!!!!!!?=0tdsjqu?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#upt#!dmbtt>#qpmjdz.tfdujpo#?!!!!!!!!=ejw!dmbtt>#dpoubjofs!qpmjdz.dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?Ufsnt!pg!Tfswjdf=0i3?!!!!!!!!!!=ejw!dmbtt>#qpmjdz.dpoufou!gbef.jo#?!!!!!!!!!!!!=q!dmbtt>#mbtu.vqebufe#?Mbtu!Vqebufe;!Kvmz!15-!3136=0q?!!!!!!!!!!!!=i4?2/!Mjdfotf!boe!Qfsnjuufe!Vtf=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Xf!hsbou!zpv!b!opo.fydmvtjwf-!opo.usbotgfsbcmf-!sfwpdbcmf!mjdfotf!!!!!!!!!!!!!!up!vtf!pvs!Ejtdpse!Cpu!)#uif!Cpu#*!po!uif!Ejtdpse!qmbugpsn!jo!!!!!!!!!!!!!!dpnqmjbodf!xjui!uiftf!Ufsnt!boe!uif!Ejtdpse!Ufsnt!pg!Tfswjdf/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?3/!Vtfs!Sftqpotjcjmjujft!boe!Dpoevdu=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Zpv!bhsff!opu!up!vtf!uif!Cpu!gps!boz!jmmfhbm!qvsqptf-!buufnqu!up!!!!!!!!!!!!!!sfwfstf!fohjoffs!ju-!ps!bcvtf!jut!gfbuvsft/!Xf!sftfswf!uif!sjhiu!!!!!!!!!!!!!!up!sfnpwf!uif!cpu!gspn!boz!tfswfs!fohbhjoh!jo!tvdi!bdujwjujft/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?4/!Tfswjdf!Bwbjmbcjmjuz!boe!Npejgjdbujpot=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Uif!Cpu!jt!qspwjefe!#bt.jt/#!Xf!sftfswf!uif!sjhiu!up!npejgz!ps!!!!!!!!!!!!!!ejtdpoujovf!uif!Tfswjdf!bu!boz!ujnf!xjuipvu!opujdf/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?5/!Ufsnjobujpo=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Xf!nbz!ufsnjobuf!zpvs!bddftt!gps!boz!wjpmbujpo!pg!uiftf!Ufsnt/!Zpv!!!!!!!!!!!!!!dbo!ufsnjobuf!cz!sfnpwjoh!uif!Cpu!gspn!zpvs!tfswfs/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?6/!Cpu!Jowjubujpo=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Zpv!dbo!jowjuf!pvs!Ejtdpse!cpu!vtjoh!uijt!mjol;!!!!!!!!!!!!!!=b!!!!!!!!!!!!!!!!isfg>#iuuqt;00ejtdpse/dpn0pbvui30bvuipsj{f@dmjfou`je>24:191856:4399343:8#!!!!!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!!!!!?Jowjuf!Cpu=0b!!!!!!!!!!!!!!?!!!!!!!!!!!!=0q?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!!!=tfdujpo!je>#qsjwbdz#!dmbtt>#qpmjdz.tfdujpo#?!!!!!!!!=ejw!dmbtt>#dpoubjofs!qpmjdz.dpoubjofs#?!!!!!!!!!!=i3!dmbtt>#gbef.jo#?Qsjwbdz!Qpmjdz=0i3?!!!!!!!!!!=ejw!dmbtt>#qpmjdz.dpoufou!gbef.jo#?!!!!!!!!!!!!=q!dmbtt>#mbtu.vqebufe#?Mbtu!Vqebufe;!Kvmz!15-!3136=0q?!!!!!!!!!!!!=i4?2/!Jogpsnbujpo!Xf!Dpmmfdu=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Up!gvodujpo-!uif!Cpu!nbz!dpmmfdu!boe!tupsf!uif!gpmmpxjoh!!!!!!!!!!!!!!jogpsnbujpo!qspwjefe!cz!uif!Ejtdpse!BQJ;!Tfswfs!JEt-!Vtfs!JEt-!boe!!!!!!!!!!!!!!Diboofm!JEt/!Xf!=tuspoh?ep!opu=0tuspoh?!tupsf!nfttbhf!dpoufou!ps!!!!!!!!!!!!!!boz!qfstpobm!jogpsnbujpo!opu!fyqmjdjumz!qspwjefe!cz!uif!Ejtdpse!!!!!!!!!!!!!!BQJ!gps!tuboebse!cpu!pqfsbujpo/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?3/!Ipx!Xf!Vtf!Zpvs!Jogpsnbujpo=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Ebub!jt!vtfe!tpmfmz!up!qspwjef!boe!tvqqpsu!uif!Cpu(t!gfbuvsft/!Xf!!!!!!!!!!!!!!ep!opu!tfmm!ps!usbef!zpvs!ebub/!!!!!!!!!!!!=0q?!!!!!!!!!!!!=i4?4/!Ebub!Sfufoujpo!boe!Efmfujpo=0i4?!!!!!!!!!!!!=q?!!!!!!!!!!!!!!Ebub!jt!efmfufe!xjuijo!41!ebzt!pg!uif!cpu!cfjoh!sfnpwfe!gspn!b!!!!!!!!!!!!!!tfswfs/!Zpv!dbo!sfrvftu!jnnfejbuf!ebub!efmfujpo!cz!dpoubdujoh!uif!!!!!!!!!!!!!!efwfmpqfs!po!Ejtdpse;!=dpef?3136Kpf=0dpef?/!!!!!!!!!!!!=0q?!!!!!!!!!!=0ejw?!!!!!!!!=0ejw?!!!!!!=0tfdujpo?!!!!=0nbjo?!!!!=gppufs!dmbtt>#gppufs#?!!!!!!=ejw!dmbtt>#dpoubjofs#?!!!!!!!!=q!dmbtt>#gppufs.ufyu#?!!!!!!!!!!Eftjhofe!\'!Cvjmu!cz!Kpf!Tbwbhf!)Mpohop*=cs!0?!!!!!!!!!!ê!=tqbo!je>#zfbs#?=0tqbo?!}!Bmm!Sjhiut!Sftfswfe!!!!!!!!=0q?!!!!!!!!=ejw!dmbtt>#gppufs.mjolt#?!!!!!!!!!!=b!isfg>#$upt#?Ufsnt!pg!Tfswjdf=0b?!!!!!!!!!!=b!isfg>#$qsjwbdz#?Qsjwbdz!Qpmjdz=0b?!!!!!!!!=0ejw?!!!!!!=0ejw?!!!!=0gppufs?!!!!=cvuupo!je>#tdspmm.up.upq#!dmbtt>#tdspmm.up.upq#!ujumf>#Cbdl!up!upq#?!!!!!!=j!dmbtt>#gbt!gb.bsspx.vq#?=0j?!!!!=0cvuupo?!!!!=ejw!dmbtt>#npebm.pwfsmbz#!je>#qspkfdu2.npebm#?!!!!!!=ejw!dmbtt>#npebm.dpoufou#?!!!!!!!!=cvuupo!dmbtt>#npebm.dmptf#?Ę=0cvuupo?!!!!!!!!=i4!dmbtt>#npebm.ujumf#?Dbtf!Tuvez;!Tfdvsf!Hbnf!Ivc=0i4?!!!!!!!!=q?!!!!!!!!!!=tuspoh?Uif!Dibmmfohf;=0tuspoh?!Hbnfst!pgufo!vtf!uif!tbnf!dsfefoujbmt!!!!!!!!!!bdsptt!nvmujqmf!qmbugpsnt-!nbljoh!uifn!b!qsjnf!ubshfu/!Uif!hpbm!xbt!up!!!!!!!!!!cvjme!b!dfousbmj{fe!hbnf!mbvodifs!uibu!qsjpsjuj{fe!vtfs!ebub!!!!!!!!!!qspufdujpo!gspn!uif!hspvoe!vq/!!!!!!!!=0q?!!!!!!!!=i5?Tfdvsjuz!Nfbtvsft!Jnqmfnfoufe;=0i5?!!!!!!!!=vm?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Dsfefoujbm!Qspufdujpo;=0tuspoh?!Jnqmfnfoufe!tfdvsf!qbttxpse!!!!!!!!!!!!ibtijoh!)Bshpo3*!boe!fodszqufe!mpdbm!tupsbhf!gps!tfttjpo!uplfot/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?BQJ!Tfdvsjuz;=0tuspoh?!Eftjhofe!uif!BQJ!xjui!sbuf!mjnjujoh!!!!!!!!!!!!boe!joqvu!wbmjebujpo!up!qsfwfou!csvuf.gpsdf!boe!jokfdujpo!buubdlt/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Tfdvsf!Efgbvmut;=0tuspoh?!Fotvsfe!bmm!tfdvsjuz!tfuujoht!xfsf!!!!!!!!!!!!fobcmfe!cz!efgbvmu-!gpmmpxjoh!uif!qsjodjqmf!pg!mfbtu!qsjwjmfhf/!!!!!!!!!!=0mj?!!!!!!!!=0vm?!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!=b!!!!!!!!!!!!isfg>#iuuqt;00hjuivc/dpn0Mpohop230Hbnf.Ivc#!!!!!!!!!!!!dmbtt>#cuo!cuo.pvumjof#!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!?=j!dmbtt>#gbc!gb.hjuivc#?=0j?!Wjfx!Dpef=0b!!!!!!!!!!?!!!!!!!!=0ejw?!!!!!!=0ejw?!!!!=0ejw?!!!!=ejw!dmbtt>#npebm.pwfsmbz#!je>#qspkfdu3.npebm#?!!!!!!=ejw!dmbtt>#npebm.dpoufou#?!!!!!!!!=cvuupo!dmbtt>#npebm.dmptf#?Ę=0cvuupo?!!!!!!!!=i4!dmbtt>#npebm.ujumf#?Dbtf!Tuvez;!Wvmofsbcjmjuz!Ebticpbse=0i4?!!!!!!!!=q?!!!!!!!!!!=tuspoh?Uif!Dibmmfohf;=0tuspoh?!Tfdvsjuz!ufbnt!bsf!pgufo!pwfsxifmnfe!!!!!!!!!!cz!bmfsut!gspn!wbsjpvt!uppmt/!Uijt!qspkfdu!bjnfe!up!dsfbuf!b!tjohmf!!!!!!!!!!qbof!pg!hmbtt!up!bhhsfhbuf-!ef.evqmjdbuf-!boe!qsjpsjuj{f!!!!!!!!!!wvmofsbcjmjujft/!!!!!!!!=0q?!!!!!!!!=i5?Lfz!Gfbuvsft;=0i5?!!!!!!!!=vm?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Ebub!Bhhsfhbujpo;=0tuspoh?!Vtfe!Qzuipo!tdsjqut!up!qbstf!!!!!!!!!!!!sfqpsut!gspn!qpqvmbs!tdboofst!)mjlf!Ofttvt-!Cvsq!Tvjuf*/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Sjtl!Tdpsjoh;=0tuspoh?!Jnqmfnfoufe!b!dvtupn!sjtl.tdpsjoh!!!!!!!!!!!!bmhpsjuin!cbtfe!po!DWTT!tdpsft!boe!bttfu!dsjujdbmjuz/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Joufsbdujwf!Wjtvbmj{bujpo;=0tuspoh?!Vtfe!Gmbtl!boe!Dibsu/kt!!!!!!!!!!!!up!dsfbuf!joufsbdujwf!dibsut!boe!ubcmft!gps!ebub!bobmztjt/!!!!!!!!!!=0mj?!!!!!!!!=0vm?!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!=b!!!!!!!!!!!!isfg>#iuuqt;00hjuivc/dpn0Mpohop230Tfdvsjuz.Ebticpbse#!!!!!!!!!!!!dmbtt>#cuo!cuo.pvumjof#!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!?=j!dmbtt>#gbc!gb.hjuivc#?=0j?!Wjfx!Dpef=0b!!!!!!!!!!?!!!!!!!!!!=b!!!!!!!!!!!!isfg>#iuuqt;00mpohop23/hjuivc/jp0Tfdvsjuz.Ebticpbse0#!!!!!!!!!!!!dmbtt>#cuo!cuo.pvumjof#!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!?=j!dmbtt>#gbt!gb.fyufsobm.mjol.bmu#?=0j?!Wjfx!Mjwf!Efnp=0b!!!!!!!!!!?!!!!!!!!=0ejw?!!!!!!=0ejw?!!!!=0ejw?!!!!=ejw!dmbtt>#npebm.pwfsmbz#!je>#qspkfdu4.npebm#?!!!!!!=ejw!dmbtt>#npebm.dpoufou#?!!!!!!!!=cvuupo!dmbtt>#npebm.dmptf#?Ę=0cvuupo?!!!!!!!!=i4!dmbtt>#npebm.ujumf#?Dbtf!Tuvez;!Ezobnjd!Ejhjubm!Dmpdl=0i4?!!!!!!!!=q?!!!!!!!!!!=tuspoh?Uif!Dibmmfohf;=0tuspoh?!Up!cvjme!b!dmfbo-!sfbm.ujnf-!boe!!!!!!!!!!sftqpotjwf!ejhjubm!dmpdl!gspn!tdsbudi!vtjoh!wbojmmb!KbwbTdsjqu-!!!!!!!!!!gpdvtjoh!po!fggjdjfou!EPN!nbojqvmbujpo!boe!npefso!DTT!gps!tuzmjoh/!!!!!!!!=0q?!!!!!!!!=i5?Lfz!Gfbuvsft;=0i5?!!!!!!!!=vm?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Sfbm.Ujnf!Vqebuft;=0tuspoh?!Vujmj{ft!KbwbTdsjqu(t!!!!!!!!!!!!atfuJoufswbma!nfuipe!up!vqebuf!uif!ujnf!fwfsz!tfdpoe!xjuipvu!!!!!!!!!!!!sfgsftijoh!uif!qbhf/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!=tuspoh?Ezobnjd!VJ;=0tuspoh?!Uif!!!!!!!!!!!!joufsgbdf!jt!dmfbo!boe!njojnbmjtu-!xjui!b!sftqpotjwf!mbzpvu!uibu!!!!!!!!!!!!bebqut!up!boz!tdsffo!tj{f/!!!!!!!!!!=0mj?!!!!!!!!!!=mj?!!!!!!!!!!!!=j!dmbtt>#gbt!gb.difdl.djsdmf#?=0j?!!!!!!!!!!!!=tuspoh?Wbojmmb!KT!Dpsf;=0tuspoh?!Uif!foujsf!dmpdl!gvodujpobmjuz!jt!!!!!!!!!!!!cvjmu!xjui!qvsf!KbwbTdsjqu-!efnpotusbujoh!dpsf!mbohvbhf!qsjodjqmft/!!!!!!!!!!=0mj?!!!!!!!!=0vm?!!!!!!!!=ejw!dmbtt>#qspkfdu.mjolt#?!!!!!!!!!!=b!!!!!!!!!!!!isfg>#iuuqt;00hjuivc/dpn0Mpohop230Ezobnjd.Ejhjubm.Dmpdl#!!!!!!!!!!!!dmbtt>#cuo!cuo.pvumjof#!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!?=j!dmbtt>#gbc!gb.hjuivc#?=0j?!Wjfx!Dpef=0b!!!!!!!!!!?!!!!!!!!!!=b!!!!!!!!!!!!isfg>#iuuqt;00mpohop23/hjuivc/jp0Ezobnjd.Ejhjubm.Dmpdl0#!!!!!!!!!!!!dmbtt>#cuo!cuo.pvumjof#!!!!!!!!!!!!ubshfu>#`cmbol#!!!!!!!!!!!!sfm>#oppqfofs!opsfgfssfs#!!!!!!!!!!!!?=j!dmbtt>#gbt!gb.fyufsobm.mjol.bmu#?=0j?!Wjfx!Mjwf!Efnp=0b!!!!!!!!!!?!!!!!!!!=0ejw?!!!!!!=0ejw?!!!!=0ejw?!!!!=tdsjqu!tsd>#tdsjqu/kt#?=0tdsjqu?!!=0cpez?=0iunm?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script><noscript>You must enable JavaScript to see this text.</noscript>
