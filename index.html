@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-bg: #100F15;
+            --primary-bg: #0D0C12;
             --secondary-bg: #1A1822;
-            --primary-purple: #7B61FF;
-            --light-purple: #A495FF;
-            --accent-purple: #5D4AC9;
+            --primary-purple: #8A2BE2;
+            --light-purple: #9932CC;
+            --accent-purple: #7B68EE;
             --text-color: #EAE8FF;
             --text-muted: #9A96B3;
-            --border-color: rgba(123, 97, 255, 0.15);
+            --border-color: rgba(138, 43, 226, 0.2);
             --success-green: #4BB543;
             --price-color: #F8F8FF;
         }
@@ -30,7 +30,7 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        
+
         body::before {
             content: '';
             position: fixed;
@@ -39,40 +39,39 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
-                radial-gradient(circle at 80% 20%, rgba(123, 97, 255, 0.1), transparent 30%),
-                radial-gradient(circle at 20% 80%, rgba(123, 97, 255, 0.05), transparent 30%);
+            background:
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1), transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.05), transparent 30%);
         }
 
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Header Styles */
         .main-header {
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: rgba(16, 15, 21, 0.95);
-            backdrop-filter: blur(12px);
+            background-color: rgba(13, 12, 18, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
-        
+
         .main-header.scrolled {
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
-        
-        .main-nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
+
         .logo {
             font-family: 'Poppins', sans-serif;
             font-size: 1.8em;
@@ -83,24 +82,24 @@
             align-items: center;
             gap: 8px;
         }
-        
-        .logo span { 
-            color: var(--primary-purple); 
+
+        .logo span {
+            color: var(--primary-purple);
         }
-        
+
         .logo-icon {
             color: var(--primary-purple);
             font-size: 1.2em;
         }
-        
-        .nav-links { 
-            list-style: none; 
-            display: flex; 
-            gap: 32px; 
-            margin: 0; 
-            padding: 0; 
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
         }
-        
+
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -110,11 +109,11 @@
             position: relative;
             padding: 8px 0;
         }
-        
-        .nav-links a:hover { 
-            color: var(--text-color); 
+
+        .nav-links a:hover {
+            color: var(--text-color);
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -125,11 +124,11 @@
             background-color: var(--primary-purple);
             transition: width 0.3s ease;
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         .nav-cta {
             background-color: var(--primary-purple);
             padding: 10px 20px;
@@ -137,30 +136,29 @@
             color: white !important;
             margin-left: 15px;
         }
-        
+
         .nav-cta:hover {
             background-color: var(--accent-purple);
             color: white !important;
         }
-        
+
         .nav-cta::after {
             display: none;
         }
 
-        /* Hero Section */
         .hero {
             padding: 120px 0 80px;
             text-align: center;
             position: relative;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
-        
+
         .hero h1 {
             font-family: 'Poppins', sans-serif;
             font-size: 3.8em;
@@ -172,7 +170,7 @@
             background-clip: text;
             color: transparent;
         }
-        
+
         .hero p {
             font-size: 1.2em;
             max-width: 600px;
@@ -183,7 +181,7 @@
             animation: fadeIn 1s forwards;
             animation-delay: 0.2s;
         }
-        
+
         .hero-buttons {
             display: flex;
             gap: 16px;
@@ -193,7 +191,7 @@
             animation: fadeIn 1.2s forwards;
             animation-delay: 0.4s;
         }
-        
+
         .hero-button {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
@@ -208,30 +206,29 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .hero-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(123, 97, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
             background: var(--accent-purple);
         }
-        
+
         .secondary-button {
             background: transparent;
             border: 2px solid var(--border-color);
             color: var(--text-color);
         }
-        
+
         .secondary-button:hover {
-            background: rgba(123, 97, 255, 0.1);
+            background: rgba(138, 43, 226, 0.1);
             box-shadow: none;
             transform: translateY(-3px);
         }
-        
-        /* Product Section */
-        .product-section { 
-            padding: 80px 0; 
+
+        .product-section {
+            padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
             font-family: 'Poppins', sans-serif;
@@ -243,7 +240,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -254,13 +251,13 @@
             background: linear-gradient(90deg, var(--primary-purple), transparent);
             border-radius: 3px;
         }
-        
+
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .product-card {
             background-color: var(--secondary-bg);
             border: 1px solid var(--border-color);
@@ -273,33 +270,36 @@
             transform: translateY(30px);
             animation: fadeIn 0.8s forwards;
         }
-        
+
         .product-card:nth-child(1) { animation-delay: 0.1s; }
         .product-card:nth-child(2) { animation-delay: 0.2s; }
-        
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+
         .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 16px 32px rgba(0,0,0,0.25);
-            border-color: rgba(123, 97, 255, 0.3);
+            border-color: rgba(138, 43, 226, 0.3);
         }
-        
+
         .product-image-container {
             position: relative;
             overflow: hidden;
-            height: 220px;
+            height: 180px;
         }
-        
-        .product-image { 
+
+        .product-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .product-card:hover .product-image {
             transform: scale(1.05);
         }
-        
+
         .product-badge {
             position: absolute;
             top: 16px;
@@ -312,81 +312,61 @@
             font-weight: 600;
             z-index: 2;
         }
-        
-        .product-info { 
-            padding: 24px; 
-            flex-grow: 1; 
-            display: flex; 
-            flex-direction: column; 
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .product-info h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
-            margin: 0 0 12px 0;
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
             color: var(--text-color);
         }
-        
-        .product-info p { 
-            color: var(--text-muted); 
-            margin: 0 0 24px 0; 
-            flex-grow: 1; 
-            font-size: 0.95em;
+
+        .product-info p {
+            color: var(--text-muted);
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+            font-size: 0.9em;
         }
         
-        .product-price {
+        .product-footer {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
+            margin-top: auto;
         }
-        
-        .current-price {
-            font-size: 1.8em;
+
+        .product-price {
+            font-size: 1.5em;
             font-weight: 700;
             color: var(--price-color);
         }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: var(--text-muted);
-            font-size: 1.1em;
-        }
-        
-        .discount-badge {
-            background-color: var(--primary-purple);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: 600;
-        }
-        
+
         .buy-button {
-            display: block; 
-            width: 100%; 
-            padding: 14px;
-            background-color: var(--primary-purple); 
+            padding: 10px 20px;
+            background-color: var(--primary-purple);
             color: #fff;
-            text-align: center; 
-            border-radius: 8px; 
+            border-radius: 8px;
             font-weight: 600;
-            border: none; 
-            cursor: pointer; 
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1em;
+            font-size: 0.9em;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
         }
-        
-        .buy-button:hover { 
-            background-color: var(--accent-purple); 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(123, 97, 255, 0.2);
+
+        .buy-button:hover {
+            background-color: var(--accent-purple);
+            transform: scale(1.05);
         }
-        
+
         /* Features Section */
         .features-section {
             padding: 80px 0;
@@ -394,59 +374,58 @@
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-        
+
         .feature-card {
-            background-color: rgba(123, 97, 255, 0.05);
+            background-color: rgba(138, 43, 226, 0.05);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 32px;
             transition: all 0.3s ease;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
-            background-color: rgba(123, 97, 255, 0.1);
+            background-color: rgba(138, 43, 226, 0.1);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
+
         .feature-icon {
             font-size: 2.5em;
             color: var(--primary-purple);
             margin-bottom: 20px;
         }
-        
+
         .feature-title {
             font-family: 'Poppins', sans-serif;
             font-size: 1.3em;
             margin-bottom: 12px;
             color: var(--text-color);
         }
-        
+
         .feature-desc {
             color: var(--text-muted);
             font-size: 0.95em;
             line-height: 1.7;
         }
 
-        /* CTA Section */
         .cta-section {
             padding: 80px 0;
             margin: 60px 0;
             text-align: center;
-            background: linear-gradient(135deg, rgba(123, 97, 255, 0.1), rgba(123, 97, 255, 0.05));
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05));
             border-radius: 16px;
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
         }
-        
+
         .cta-section::before {
             content: '';
             position: absolute;
@@ -454,11 +433,11 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(123, 97, 255, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.05) 0%, transparent 70%);
             z-index: -1;
             animation: rotate 20s linear infinite;
         }
-        
+
         .cta-section h2 {
             font-family: 'Poppins', sans-serif;
             font-size: 2.2em;
@@ -466,7 +445,7 @@
             margin-bottom: 16px;
             color: var(--text-color);
         }
-        
+
         .cta-section p {
             color: var(--text-muted);
             margin-bottom: 32px;
@@ -475,7 +454,7 @@
             margin-right: auto;
             font-size: 1.1em;
         }
-        
+
         .cta-button {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
@@ -491,35 +470,34 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .cta-button:hover {
             background-color: var(--primary-purple);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(123, 97, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
             transform: translateY(-3px);
         }
 
-        /* Footer */
-        .main-footer { 
-            text-align: center; 
-            padding: 60px 0 40px; 
-            border-top: 1px solid var(--border-color); 
+        .main-footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             background-color: var(--secondary-bg);
         }
-        
+
         .footer-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .footer-logo {
             font-family: 'Poppins', sans-serif;
             font-size: 1.8em;
             margin-bottom: 20px;
             display: inline-block;
         }
-        
+
         .footer-links {
             display: flex;
             justify-content: center;
@@ -527,48 +505,48 @@
             margin: 30px 0;
             flex-wrap: wrap;
         }
-        
+
         .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .footer-links a:hover {
             color: var(--primary-purple);
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin: 30px 0;
         }
-        
+
         .social-link {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(123, 97, 255, 0.1);
+            background-color: rgba(138, 43, 226, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
             transition: all 0.3s ease;
         }
-        
+
         .social-link:hover {
             background-color: var(--primary-purple);
             color: white;
             transform: translateY(-3px);
         }
-        
+
         .copyright {
             font-size: 0.9em;
             margin-top: 30px;
             opacity: 0.7;
         }
-        
+
         .disclaimer {
             font-size: 0.8em;
             margin-top: 20px;
@@ -578,23 +556,23 @@
             margin-right: auto;
         }
 
-        @keyframes fadeIn { 
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            } 
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        
+
         @media (max-width: 992px) {
             .hero h1 { font-size: 3.2em; }
             .section-title { font-size: 2.2em; }
         }
-        
+
         @media (max-width: 768px) {
             .hero { padding: 100px 0 60px; }
             .hero h1 { font-size: 2.8em; }
@@ -603,11 +581,10 @@
             .nav-links { display: none; }
             .hero-buttons { flex-direction: column; }
         }
-        
+
         @media (max-width: 576px) {
             .hero h1 { font-size: 2.2em; }
             .section-title { font-size: 1.8em; }
-            .product-card { min-width: 100%; }
             .container { padding: 0 16px; }
         }
     </style>
@@ -654,16 +631,14 @@
                         <div class="product-badge">Instant Delivery</div>
                     </div>
                     <div class="product-info">
-                        <h3>Discord Server Boosts (20x)</h3>
-                        <p>Unlock Level 3 perks for your server. This package grants 20 boosts for 3 months, giving your community the ultimate set of features including enhanced audio quality, custom server banner, and more.</p>
-                        
-                        <div class="product-price">
-                            <span class="current-price">£10.00</span>
+                        <h3>Discord Server Boosts (20x) 1 Month</h3>
+                        <p>Unlock Level 3 perks for your server with 20 boosts for 1 month.</p>
+                        <div class="product-footer">
+                            <span class="product-price">£10.00</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="315901" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
                         </div>
-                        
-                        <button class="buy-button" data-sell-store="65643" data-sell-product="315901">
-                            <i class="fas fa-bolt"></i> Purchase Now
-                        </button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -672,16 +647,60 @@
                         <div class="product-badge">Best Seller</div>
                     </div>
                     <div class="product-info">
-                        <h3>Discord Server Boosts (14x)</h3>
-                        <p>Instantly boost your server to Level 3. This bundle includes 14 boosts for 3 months, perfect for unlocking premium community perks like vanity URL, server banner, and 384kbps audio.</p>
-                        
-                        <div class="product-price">
-                            <span class="current-price">£7.00</span>
+                        <h3>Discord Server Boosts (14x) 3 Months</h3>
+                        <p>This bundle includes 14 boosts for 3 months, perfect for unlocking premium community perks.</p>
+                        <div class="product-footer">
+                            <span class="product-price">£7.00</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="315902" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
                         </div>
-                        
-                        <button class="buy-button" data-sell-store="65643" data-sell-product="315902">
-                            <i class="fas fa-bolt"></i> Purchase Now
-                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://storage.sell.app/store/65643/listings/1IhME2g6P0H2ffHleYu5AgpvAPosraPepf4M4jfk.png" alt="Product Image" class="product-image">
+                        <div class="product-badge">New!</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Discord Server Boosts (14x) 1 Month</h3>
+                        <p>This bundle includes 14 boosts for 1 month, perfect for unlocking premium community perks.</p>
+                        <div class="product-footer">
+                           <span class="product-price">£5.00</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="316019" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://storage.sell.app/store/65643/listings/DKpoV2QH0bx2iMejcvSae6vax3aURKmsBqqsFiOd.png" alt="Product Image" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>Discord Server Boosts (20x) 3 Months</h3>
+                        <p>Instantly boost your server to Level 3. This bundle includes 20 boosts for 3 months.</p>
+                        <div class="product-footer">
+                            <span class="product-price">£30.00</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="316020" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://storage.sell.app/store/65643/listings/Rba1ir5fRsx8q5DmyKxPrDUNasJN2R6p88IqgoQv.webp" alt="Product Image" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roblox Evil Clown Mask</h3>
+                        <p>Get the Evil Clown Mask for Roblox (PC) a creepy avatar accessory.</p>
+                        <div class="product-footer">
+                            <span class="product-price">£0.80</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="316021" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -750,8 +769,8 @@
                 </a>
             </div>
             
-            <p class="copyright">© 2025 Encryptic. All Rights Reserved.</p>
-            <p class="disclaimer">Encryptic is not affiliated with, endorsed by, or sponsored by Discord Inc. Discord is a registered trademark of Discord Inc.</p>
+            <p class="copyright">© 2025 Longno. All Rights Reserved.</p>
+            <p class="disclaimer">Longno is not affiliated with any products you may find on this website</p>
         </div>
     </footer>
 
@@ -775,6 +794,8 @@
             });
         });
     </script>
+
     <script src="https://cdn.sell.app/embed/script.js" type="module"></script>
+    
 </body>
 </html>
