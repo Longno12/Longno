@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encryptic Store - The Premier Digital Marketplace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <title>Encryptic Store - Premium Digital Marketplace</title>
+    <meta name="description" content="Your trusted marketplace for premium digital goods. Instant delivery, secure transactions, and exceptional support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.sell.app/embed/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,16 +22,22 @@
             --border-color: rgba(138, 43, 226, 0.2);
             --success-green: #4BB543;
             --price-color: #F8F8FF;
+            --gradient: linear-gradient(135deg, var(--primary-purple), var(--accent-purple));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-color);
-            margin: 0;
-            padding: 0;
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
         }
 
         body::before {
@@ -38,32 +47,72 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background:
+            z-index: -2;
+            background: 
                 radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.1), transparent 30%),
                 radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.05), transparent 30%);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(138, 43, 226, 0.3);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-purple);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-purple);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
         .main-header {
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: rgba(13, 12, 18, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: rgba(13, 12, 18, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .main-header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 12px 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
         }
 
         .main-nav {
@@ -74,36 +123,44 @@
 
         .logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8em;
+            font-size: 1.8rem;
             color: var(--text-color);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .logo span {
             color: var(--primary-purple);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover span {
+            text-shadow: 0 0 15px var(--primary-purple);
         }
 
         .logo-icon {
             color: var(--primary-purple);
-            font-size: 1.2em;
+            font-size: 1.4rem;
         }
 
         .nav-links {
-            list-style: none;
             display: flex;
-            gap: 32px;
-            margin: 0;
-            padding: 0;
+            gap: 35px;
+            list-style: none;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 1em;
+            font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s ease;
             position: relative;
@@ -121,7 +178,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-purple);
+            background: var(--gradient);
             transition: width 0.3s ease;
         }
 
@@ -130,30 +187,42 @@
         }
 
         .nav-cta {
-            background-color: var(--primary-purple);
-            padding: 10px 20px;
+            background: var(--gradient);
+            padding: 12px 24px;
             border-radius: 8px;
             color: white !important;
-            margin-left: 15px;
+            margin-left: 20px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
         }
 
         .nav-cta:hover {
-            background-color: var(--accent-purple);
-            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
         }
 
         .nav-cta::after {
             display: none;
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         .hero {
-            padding: 120px 0 80px;
+            padding: 150px 0 100px;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -161,20 +230,21 @@
 
         .hero h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 3.8em;
-            margin-bottom: 24px;
+            font-size: 4rem;
+            margin-bottom: 25px;
             line-height: 1.15;
             background: linear-gradient(45deg, var(--text-color), var(--light-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+            animation: fadeInUp 1s ease;
         }
 
         .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 50px;
             color: var(--text-muted);
             line-height: 1.7;
             opacity: 0;
@@ -184,7 +254,7 @@
 
         .hero-buttons {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
             margin-top: 40px;
             opacity: 0;
@@ -195,66 +265,75 @@
         .hero-button {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 1em;
+            font-size: 1.1rem;
             color: #fff;
-            background: var(--primary-purple);
-            padding: 16px 32px;
+            background: var(--gradient);
+            padding: 16px 36px;
             border-radius: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
         }
 
         .hero-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
-            background: var(--accent-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
         }
 
         .secondary-button {
             background: transparent;
             border: 2px solid var(--border-color);
             color: var(--text-color);
+            box-shadow: none;
         }
 
         .secondary-button:hover {
             background: rgba(138, 43, 226, 0.1);
-            box-shadow: none;
-            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.1);
+            transform: translateY(-5px);
         }
 
         .product-section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .section-title {
             text-align: center;
             font-family: 'Poppins', sans-serif;
-            font-size: 2.5em;
-            margin-bottom: 60px;
+            font-size: 2.8rem;
+            margin-bottom: 70px;
             color: var(--text-color);
             position: relative;
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-purple), transparent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
             border-radius: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -269,6 +348,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeIn 0.8s forwards;
+            position: relative;
         }
 
         .product-card:nth-child(1) { animation-delay: 0.1s; }
@@ -277,16 +357,33 @@
         .product-card:nth-child(4) { animation-delay: 0.4s; }
         .product-card:nth-child(5) { animation-delay: 0.5s; }
 
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 32px rgba(0,0,0,0.25);
-            border-color: rgba(138, 43, 226, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-color: transparent;
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
         }
 
         .product-image-container {
             position: relative;
             overflow: hidden;
-            height: 180px;
+            height: 200px;
         }
 
         .product-image {
@@ -297,24 +394,25 @@
         }
 
         .product-card:hover .product-image {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .product-badge {
             position: absolute;
             top: 16px;
             right: 16px;
-            background-color: var(--success-green);
+            background: var(--gradient);
             color: white;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.8em;
+            font-size: 0.8rem;
             font-weight: 600;
             z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .product-info {
-            padding: 20px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -322,16 +420,17 @@
 
         .product-info h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.2em;
-            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            margin: 0 0 15px 0;
             color: var(--text-color);
         }
 
         .product-info p {
             color: var(--text-muted);
-            margin: 0 0 20px 0;
+            margin: 0 0 25px 0;
             flex-grow: 1;
-            font-size: 0.9em;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
         
         .product-footer {
@@ -342,34 +441,38 @@
         }
 
         .product-price {
-            font-size: 1.5em;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--price-color);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .buy-button {
-            padding: 10px 20px;
-            background-color: var(--primary-purple);
+            padding: 12px 24px;
+            background: var(--gradient);
             color: #fff;
             border-radius: 8px;
             font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9em;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
         }
 
         .buy-button:hover {
-            background-color: var(--accent-purple);
             transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
         }
-
-        /* Features Section */
+        
         .features-section {
-            padding: 80px 0;
+            padding: 100px 0;
             background-color: var(--secondary-bg);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
@@ -377,50 +480,75 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .feature-card {
             background-color: rgba(138, 43, 226, 0.05);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 32px;
+            border-radius: 16px;
+            padding: 40px 30px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             background-color: rgba(138, 43, 226, 0.1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: transparent;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
         }
 
         .feature-icon {
-            font-size: 2.5em;
+            font-size: 2.8rem;
             color: var(--primary-purple);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
         }
 
         .feature-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--text-color);
         }
 
         .feature-desc {
             color: var(--text-muted);
-            font-size: 0.95em;
+            font-size: 1rem;
             line-height: 1.7;
         }
 
         .cta-section {
-            padding: 80px 0;
-            margin: 60px 0;
+            padding: 100px 0;
+            margin: 80px 0;
             text-align: center;
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05));
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
@@ -440,79 +568,166 @@
 
         .cta-section h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2.2em;
-            margin-top: 0;
-            margin-bottom: 16px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             color: var(--text-color);
         }
 
         .cta-section p {
             color: var(--text-muted);
-            margin-bottom: 32px;
-            max-width: 600px;
+            margin-bottom: 40px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            font-size: 1.1em;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         .cta-button {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.1rem;
             color: var(--primary-purple);
             background-color: transparent;
             border: 2px solid var(--primary-purple);
-            padding: 14px 32px;
+            padding: 16px 40px;
             border-radius: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .cta-button:hover {
-            background-color: var(--primary-purple);
+            background: var(--gradient);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
-            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+            transform: translateY(-5px);
+            border-color: transparent;
+        }
+
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-purple);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: var(--secondary-bg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(138, 43, 226, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
         }
 
         .main-footer {
-            text-align: center;
-            padding: 60px 0 40px;
+            padding: 80px 0 40px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             background-color: var(--secondary-bg);
         }
 
         .footer-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .footer-logo {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .footer-column h3 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8em;
+            font-size: 1.3rem;
             margin-bottom: 20px;
-            display: inline-block;
+            color: var(--text-color);
         }
 
         .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .footer-links a:hover {
+            color: var(--primary-purple);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .footer-logo span {
             color: var(--primary-purple);
         }
 
@@ -524,8 +739,8 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-color: rgba(138, 43, 226, 0.1);
             display: flex;
@@ -533,30 +748,44 @@
             justify-content: center;
             color: var(--text-muted);
             transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
         .social-link:hover {
-            background-color: var(--primary-purple);
+            background: var(--gradient);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
         }
 
         .copyright {
-            font-size: 0.9em;
+            font-size: 0.9rem;
             margin-top: 30px;
             opacity: 0.7;
         }
 
         .disclaimer {
-            font-size: 0.8em;
+            font-size: 0.85rem;
             margin-top: 20px;
             opacity: 0.6;
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -568,28 +797,158 @@
             to { transform: rotate(360deg); }
         }
 
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--secondary-bg);
+            z-index: 1001;
+            padding: 30px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .mobile-menu-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .mobile-menu-logo span {
+            color: var(--primary-purple);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .mobile-menu-cta {
+            display: inline-block;
+            margin-top: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 992px) {
-            .hero h1 { font-size: 3.2em; }
-            .section-title { font-size: 2.2em; }
+            .hero h1 { font-size: 3.2rem; }
+            .section-title { font-size: 2.4rem; }
+            .features-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 100px 0 60px; }
-            .hero h1 { font-size: 2.8em; }
-            .hero p { font-size: 1.1em; }
-            .product-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .hero-buttons { flex-direction: column; }
+            .mobile-menu-btn { display: block; }  
+            .hero { padding: 120px 0 80px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-buttons { flex-direction: column; gap: 15px; }      
+            .section-title { font-size: 2rem; }
+            .section-subtitle { font-size: 1rem; }        
+            .product-grid { grid-template-columns: 1fr; }           
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-links a:hover { transform: none; }
         }
 
         @media (max-width: 576px) {
-            .hero h1 { font-size: 2.2em; }
-            .section-title { font-size: 1.8em; }
-            .container { padding: 0 16px; }
+            .container { padding: 0 20px; }            
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1rem; }            
+            .section-title { font-size: 1.8rem; }            
+            .feature-card { padding: 30px 20px; }   
+            .cta-section { padding: 60px 0; }
+            .cta-section h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="particles" id="particles"></div>
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="#" class="mobile-menu-logo">
+                Encryptic<span>.</span>
+            </a>
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#products">Products</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://discord.gg/Encryptic" target="_blank">Support</a></li>
+            <a href="#contact" class="mobile-menu-cta">Contact Us</a>
+        </ul>
+    </div>
 
     <header class="main-header" id="main-header">
         <nav class="main-nav container">
@@ -600,9 +959,13 @@
             <ul class="nav-links">
                 <li><a href="#products">Products</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="https://discord.gg/Encryptic" target="_blank">Support</a></li>
                 <li><a href="#contact" class="nav-cta">Contact Us</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -624,6 +987,7 @@
 
         <section id="products" class="product-section">
             <h2 class="section-title">Featured Products</h2>
+            <p class="section-subtitle">Browse our selection of premium digital products designed to enhance your online experience.</p>
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-image-container">
@@ -632,7 +996,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Discord Server Boosts (20x) 1 Month</h3>
-                        <p>Unlock Level 3 perks for your server with 20 boosts for 1 month.</p>
+                        <p>Unlock Level 3 perks for your server with 20 boosts for 1 month. Get premium vanity URL, server banner, and 384kbps audio quality.</p>
                         <div class="product-footer">
                             <span class="product-price">£10.00</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="315901" data-sell-darkmode="true">
@@ -648,7 +1012,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Discord Server Boosts (14x) 3 Months</h3>
-                        <p>This bundle includes 14 boosts for 3 months, perfect for unlocking premium community perks.</p>
+                        <p>This bundle includes 14 boosts for 3 months, perfect for unlocking premium community perks at an affordable price.</p>
                         <div class="product-footer">
                             <span class="product-price">£7.00</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="315902" data-sell-darkmode="true">
@@ -664,7 +1028,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Discord Server Boosts (14x) 1 Month</h3>
-                        <p>This bundle includes 14 boosts for 1 month, perfect for unlocking premium community perks.</p>
+                        <p>This bundle includes 14 boosts for 1 month, perfect for unlocking premium community perks for short-term needs.</p>
                         <div class="product-footer">
                            <span class="product-price">£5.00</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="316019" data-sell-darkmode="true">
@@ -679,7 +1043,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Discord Server Boosts (20x) 3 Months</h3>
-                        <p>Instantly boost your server to Level 3. This bundle includes 20 boosts for 3 months.</p>
+                        <p>Instantly boost your server to Level 3. This bundle includes 20 boosts for 3 months - the best value for large communities.</p>
                         <div class="product-footer">
                             <span class="product-price">£30.00</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="316020" data-sell-darkmode="true">
@@ -694,7 +1058,7 @@
                     </div>
                     <div class="product-info">
                         <h3>Roblox Evil Clown Mask</h3>
-                        <p>Get the Evil Clown Mask for Roblox (PC) a creepy avatar accessory.</p>
+                        <p>Get the Evil Clown Mask for Roblox (PC) - a creepy avatar accessory that will make your character stand out from the crowd.</p>
                         <div class="product-footer">
                             <span class="product-price">£0.80</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="316021" data-sell-darkmode="true">
@@ -708,13 +1072,14 @@
 
         <section id="features" class="features-section">
             <h2 class="section-title">Why Choose Encryptic?</h2>
+            <p class="section-subtitle">We're committed to providing the best digital marketplace experience with these key features.</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3 class="feature-title">Instant Delivery</h3>
-                    <p class="feature-desc">Receive your digital products immediately after purchase. No waiting, no delays - just instant access to what you need.</p>
+                    <p class="feature-desc">Receive your digital products immediately after purchase. No waiting, no delays - just instant access to what you need, 24/7.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -722,7 +1087,7 @@
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3 class="feature-title">Secure Transactions</h3>
-                    <p class="feature-desc">All purchases are protected with industry-standard encryption and secure payment processing.</p>
+                    <p class="feature-desc">All purchases are protected with industry-standard encryption and secure payment processing. Your data is always safe with us.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -730,7 +1095,31 @@
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3 class="feature-title">24/7 Support</h3>
-                    <p class="feature-desc">Our dedicated support team is available around the clock to assist with any questions or issues.</p>
+                    <p class="feature-desc">Our dedicated support team is available around the clock to assist with any questions or issues you might have.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="feature-title">Premium Quality</h3>
+                    <p class="feature-desc">We carefully vet all our products to ensure they meet our high standards for quality and reliability.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3 class="feature-title">Competitive Pricing</h3>
+                    <p class="feature-desc">We offer the best prices in the market without compromising on quality or service.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3 class="feature-title">Easy Refunds</h3>
+                    <p class="feature-desc">Not satisfied? We offer a straightforward refund policy to ensure you're happy with your purchase.</p>
                 </div>
             </div>
         </section>
@@ -743,38 +1132,135 @@
             </a>
         </section>
 
+        <section id="faq" class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our products and services.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does instant delivery work?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        After completing your purchase, you'll immediately receive an email with your digital product or access instructions. For Discord boosts, we typically apply them to your server within minutes of purchase.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We currently accept PayPal as our primary payment method, but we're working to add more payment options soon.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I have issues with my purchase?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Please join our Discord server for the fastest support. Our team is available 24/7 to assist with any issues you might encounter.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are your products legitimate?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, all our products are 100% legitimate. We source them directly from official channels or authorized resellers to ensure quality and authenticity.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I contact customer support?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        The fastest way to reach us is through our Discord server. You can find the link at the top of this page or in our footer.
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer" id="contact">
         <div class="footer-content">
-            <a href="#" class="footer-logo">Encryptic<span>.</span></a>
-            
-            <div class="footer-links">
-                <a href="#products">Products</a>
-                <a href="#features">Features</a>
-                <a href="https://discord.gg/Encryptic" target="_blank">Support</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Encryptic</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://discord.gg/Encryptic" target="_blank">Discord Server</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="social-links">
-                <a href="#" class="social-link" aria-label="Discord">
-                    <i class="fab fa-discord"></i>
+            <div class="footer-bottom">
+                <a href="#" class="footer-logo">
+                    Encryptic<span>.</span>
                 </a>
-                <a href="#" class="social-link" aria-label="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                
+                <p class="copyright">© 2025 Encryptic Store. All Rights Reserved.</p>
+                <p class="disclaimer">Encryptic is not affiliated with Discord, Roblox, or any other products mentioned on this website. All trademarks are the property of their respective owners.</p>
             </div>
-            
-            <p class="copyright">© 2025 Longno. All Rights Reserved.</p>
-            <p class="disclaimer">Longno is not affiliated with any products you may find on this website</p>
         </div>
     </footer>
 
     <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
         window.addEventListener('scroll', function() {
             const header = document.getElementById('main-header');
             if (window.scrollY > 50) {
@@ -786,16 +1272,47 @@
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
+                e.preventDefault();      
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             });
         });
-    </script>
 
-    <script src="https://cdn.sell.app/embed/script.js" type="module"></script>
-    
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;     
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;           
+                particlesContainer.appendChild(particle);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+    <script src="https://cdn.sell.app/embed/script.js" type="module"></script>    
 </body>
 </html>
