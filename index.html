@@ -53,6 +53,7 @@
                 radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.05), transparent 30%);
         }
 
+
         .particles {
             position: fixed;
             top: 0;
@@ -75,6 +76,7 @@
             100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
         }
 
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -92,12 +94,14 @@
             background: var(--accent-purple);
         }
 
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 30px;
         }
-        
+
+
         .main-header {
             padding: 20px 0;
             position: sticky;
@@ -214,6 +218,7 @@
             cursor: pointer;
         }
 
+
         .hero {
             padding: 150px 0 100px;
             text-align: center;
@@ -296,6 +301,7 @@
             transform: translateY(-5px);
         }
 
+
         .product-section {
             padding: 100px 0;
         }
@@ -330,6 +336,40 @@
             font-size: 1.1rem;
             line-height: 1.7;
         }
+        
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--secondary-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-color);
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
 
         .product-grid {
             display: grid;
@@ -350,12 +390,18 @@
             animation: fadeIn 0.8s forwards;
             position: relative;
         }
+        
+        .product-card.hidden {
+            display: none;
+        }
 
         .product-card:nth-child(1) { animation-delay: 0.1s; }
         .product-card:nth-child(2) { animation-delay: 0.2s; }
         .product-card:nth-child(3) { animation-delay: 0.3s; }
         .product-card:nth-child(4) { animation-delay: 0.4s; }
         .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
 
         .product-card::before {
             content: '';
@@ -470,7 +516,8 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
         }
-        
+
+
         .features-section {
             padding: 100px 0;
             background-color: var(--secondary-bg);
@@ -543,6 +590,7 @@
             line-height: 1.7;
         }
 
+
         .cta-section {
             padding: 100px 0;
             margin: 80px 0;
@@ -606,6 +654,7 @@
             transform: translateY(-5px);
             border-color: transparent;
         }
+
 
         .faq-section {
             padding: 100px 0;
@@ -891,6 +940,7 @@
             visibility: visible;
         }
 
+
         @media (max-width: 1200px) {
             .container {
                 max-width: 100%;
@@ -905,24 +955,32 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .mobile-menu-btn { display: block; }  
+            .mobile-menu-btn { display: block; }
+            
             .hero { padding: 120px 0 80px; }
             .hero h1 { font-size: 2.8rem; }
             .hero p { font-size: 1.1rem; }
-            .hero-buttons { flex-direction: column; gap: 15px; }      
+            .hero-buttons { flex-direction: column; gap: 15px; }
+            
             .section-title { font-size: 2rem; }
-            .section-subtitle { font-size: 1rem; }        
-            .product-grid { grid-template-columns: 1fr; }           
+            .section-subtitle { font-size: 1rem; }
+            
+            .product-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-links a:hover { transform: none; }
         }
 
         @media (max-width: 576px) {
-            .container { padding: 0 20px; }            
+            .container { padding: 0 20px; }
+            
             .hero h1 { font-size: 2.4rem; }
-            .hero p { font-size: 1rem; }            
-            .section-title { font-size: 1.8rem; }            
-            .feature-card { padding: 30px 20px; }   
+            .hero p { font-size: 1rem; }
+            
+            .section-title { font-size: 1.8rem; }
+            
+            .feature-card { padding: 30px 20px; }
+            
             .cta-section { padding: 60px 0; }
             .cta-section h2 { font-size: 2rem; }
         }
@@ -988,8 +1046,18 @@
         <section id="products" class="product-section">
             <h2 class="section-title">Featured Products</h2>
             <p class="section-subtitle">Browse our selection of premium digital products designed to enhance your online experience.</p>
+            
+
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="discord">Discord</button>
+                <button class="filter-btn" data-filter="roblox">Roblox</button>
+                <button class="filter-btn" data-filter="fortnite">Fortnite</button>
+                <button class="filter-btn" data-filter="coding">Coding Menus</button>
+            </div>
+
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-category="discord">
                     <div class="product-image-container">
                         <img src="https://storage.sell.app/store/65643/listings/wSRDZCMgUtjGjyXJin0wT8n63JuEx5IziTHTaTZr.png" alt="Discord Server Boosts" class="product-image">
                         <div class="product-badge">Instant Delivery</div>
@@ -1005,7 +1073,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="discord">
                     <div class="product-image-container">
                         <img src="https://storage.sell.app/store/65643/listings/h7UOObIMWPXrYEZxnBuN9kIL6U6p7LBTm9G6SbAI.png" alt="Discord Server Boosts" class="product-image">
                         <div class="product-badge">Best Seller</div>
@@ -1014,14 +1082,14 @@
                         <h3>Discord Server Boosts (14x) 3 Months</h3>
                         <p>This bundle includes 14 boosts for 3 months, perfect for unlocking premium community perks at an affordable price.</p>
                         <div class="product-footer">
-                            <span class="product-price">£10.00</span>
+                            <span class="product-price">£7.00</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="315902" data-sell-darkmode="true">
                                 <i class="fas fa-bolt"></i> Purchase
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="discord">
                     <div class="product-image-container">
                         <img src="https://storage.sell.app/store/65643/listings/1IhME2g6P0H2ffHleYu5AgpvAPosraPepf4M4jfk.png" alt="Product Image" class="product-image">
                         <div class="product-badge">New!</div>
@@ -1037,7 +1105,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="product-card">
+                 <div class="product-card" data-category="discord">
                     <div class="product-image-container">
                         <img src="https://storage.sell.app/store/65643/listings/DKpoV2QH0bx2iMejcvSae6vax3aURKmsBqqsFiOd.png" alt="Product Image" class="product-image">
                     </div>
@@ -1052,7 +1120,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="product-card">
+                 <div class="product-card" data-category="roblox">
                     <div class="product-image-container">
                         <img src="https://storage.sell.app/store/65643/listings/Rba1ir5fRsx8q5DmyKxPrDUNasJN2R6p88IqgoQv.webp" alt="Product Image" class="product-image">
                     </div>
@@ -1062,6 +1130,36 @@
                         <div class="product-footer">
                             <span class="product-price">£0.80</span>
                             <button class="buy-button" data-sell-store="65643" data-sell-product="316021" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="roblox">
+                    <div class="product-image-container">
+                        <img src="https://storage.sell.app/store/65643/listings/hzrC1mHfU43X1PBNw9lJbV4aaoz1m7OJGi0ZiUwM.webp" alt="Roblox Freaky Fly Face" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>Roblox Freaky Fly Face</h3>
+                        <p>Creep out your friends with the Freaky Fly Face avatar accessory in Roblox! This bizarre cosmetic features giant bug eyes and a freaky expression that will make your avatar truly unforgettable.<br><br>🎮 Platform: Roblox (PC)<br>🌍 Region: Global<br>🔑 Type: Key (Distributed via Discord Ticket)</p>
+                        <div class="product-footer">
+                            <span class="product-price">£1.00</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="316175" data-sell-darkmode="true">
+                                <i class="fas fa-bolt"></i> Purchase
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="roblox">
+                    <div class="product-image-container">
+                        <img src="https://storage.sell.app/store/65643/listings/tT6xCDT0XNMupMMwLFwHNxJIJceO2OiGWcR1Ahnw.webp" alt="Roblox Void Sheep Shoulder Pet" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h3>Void Sheep Shoulder Pet</h3>
+                        <p>Adopt the mysterious Void Sheep Shoulder Pet in Roblox and flex this otherworldly creature on your shoulder! This unique avatar accessory includes four in-game bonuses for World // Zero, including:<br><br>🐑 Void Sheep Pet<br>🦴 Sheep Horns<br>🛡️ Void Armor<br>💥 Elimination Effect<br><br>🎮 Platform: Roblox (PC)<br>🌍 Region: Global<br>🔑 Type: Key (Delivered via Discord Ticket)</p>
+                        <div class="product-footer">
+                            <span class="product-price">£1.50</span>
+                            <button class="buy-button" data-sell-store="65643" data-sell-product="316176" data-sell-darkmode="true">
                                 <i class="fas fa-bolt"></i> Purchase
                             </button>
                         </div>
@@ -1136,6 +1234,15 @@
             <h2 class="section-title">Frequently Asked Questions</h2>
             <p class="section-subtitle">Find answers to common questions about our products and services.</p>
             <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does instant delivery work?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        After completing your purchase, you'll immediately receive an email with your digital product or access instructions. For Discord boosts, we typically apply them to your server within minutes of purchase.
+                    </div>
+                </div>
                 <div class="faq-item">
                     <div class="faq-question">
                         What payment methods do you accept?
@@ -1229,6 +1336,7 @@
     </footer>
 
     <script>
+
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -1252,6 +1360,7 @@
             document.body.style.overflow = '';
         });
 
+
         window.addEventListener('scroll', function() {
             const header = document.getElementById('main-header');
             if (window.scrollY > 50) {
@@ -1261,9 +1370,11 @@
             }
         });
         
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();      
+                e.preventDefault();
+                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -1276,6 +1387,7 @@
             });
         });
 
+
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
@@ -1284,9 +1396,34 @@
             });
         });
 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+
+                    productCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+
+
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;     
+            const particleCount = 30;    
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
@@ -1296,14 +1433,18 @@
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.top = `${Math.random() * 100}%`;
                 const duration = Math.random() * 10 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                particle.style.opacity = Math.random() * 0.5 + 0.1;           
+                particle.style.animationDuration = `${duration}s`;           
+                particle.style.animationDelay = `${Math.random() * 5}s`;             
+                particle.style.opacity = Math.random() * 0.5 + 0.1;     
                 particlesContainer.appendChild(particle);
             }
         }
+
+
         document.addEventListener('DOMContentLoaded', createParticles);
     </script>
-    <script src="https://cdn.sell.app/embed/script.js" type="module"></script>    
+
+    <script src="https://cdn.sell.app/embed/script.js" type="module"></script>
+    
 </body>
 </html>
